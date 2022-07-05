@@ -17,3 +17,22 @@ C:\Users\caleb.rutherford\source\repos\GT7 Randomizer\GT7 Randomizer\obj\Release
 C:\Users\caleb.rutherford\source\repos\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\ref\GT7 Randomizer.dll
 C:\Users\caleb.rutherford\source\repos\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.pdb
 C:\Users\caleb.rutherford\source\repos\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.genruntimeconfig.cache
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\GT7 Randomizer.exe
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\GT7 Randomizer.deps.json
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\GT7 Randomizer.runtimeconfig.json
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\GT7 Randomizer.runtimeconfig.dev.json
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\GT7 Randomizer.dll
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\ref\GT7 Randomizer.dll
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\GT7 Randomizer.pdb
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.csproj.AssemblyReference.cache
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7_Randomizer.Form1.resources
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7_Randomizer.Properties.Resources.resources
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.csproj.GenerateResource.cache
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.GeneratedMSBuildEditorConfig.editorconfig
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.AssemblyInfoInputs.cache
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.AssemblyInfo.cs
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.csproj.CoreCompileInputs.cache
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.dll
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\ref\GT7 Randomizer.dll
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.pdb
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.genruntimeconfig.cache

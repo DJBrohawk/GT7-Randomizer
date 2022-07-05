@@ -11,9 +11,8 @@ With this app, you'll be able to do a number of things:
 	B) Fuel Use Multiplier
 	C) Tire Use Multiplier
 	D) Category
-	E) Starting Time of Day
-	F) Time Multiplier
-	G) Start Type (As in grid or rolling) - with a random distance if rolling start
+	E) Time Multiplier
+	F) Start Type (As in grid or rolling) - with a random distance if rolling start
 3) Generate a random car for everyone in your race!
 
 This app uses the included files "Gr3List.txt", "Gr4List.txt", "CustomList.txt", "CategoryList.txt" and "TrackList.txt" which you can modify yourself if you wish to subtract cars from the list (namely, THE UNDRIVEABLE MR GROUP 3 CARS) or add to them as GT7 introduces new cars, tracks, or categories. You can add anything to these lists, this program isn't all that smart, so be careful modifying the files. That means keep your Brazzers search categories to yourself!
@@ -54,13 +53,13 @@ This app was inspired by ideas tossed around between myself and some the friends
 
 Have fun! :)
 
----POTENTIAL FUTURE IMPROVEMENTS---
+---FUTURE IMPROVEMENTS IN VERSION 2---
 
-Don't know if I'll end up doing these, but they're here in the event somebody wants to.
+I have some improvement ideas in mind
 
-1) Not making everything text file reliant and instead having separate forms for the cars that have checkboxes for which ones are included in the searches, with filters for categories and stats included
+1) Making this app not reliant on text files but rather use forms with lists and checkboxes to allow the user to include or exclude cars/tracks without manipulating text files. This method will allow for more accurate randomizing of weather and time of day related to the tracks themselves, since not all tracks support rain/night time racing.
 
-2) Having an adjustable number of cars/tracks that don't repeat
+2) Adding the ability to let the user determine how many cars/track choices there are before a repeat can occur.
 
 
 

@@ -66,7 +66,7 @@ namespace GT7_Randomizer
             this.weatherBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.bopCheck = new System.Windows.Forms.CheckBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.bopBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.maxLapBox = new System.Windows.Forms.NumericUpDown();
             this.fuelMultiplierBox = new System.Windows.Forms.NumericUpDown();
@@ -264,7 +264,7 @@ namespace GT7_Randomizer
             // 
             this.trackBox.Location = new System.Drawing.Point(69, 173);
             this.trackBox.Name = "trackBox";
-            this.trackBox.Size = new System.Drawing.Size(508, 31);
+            this.trackBox.Size = new System.Drawing.Size(533, 31);
             this.trackBox.TabIndex = 17;
             // 
             // randomRaceBtn
@@ -303,7 +303,6 @@ namespace GT7_Randomizer
             // 
             this.fuelUseBox.Location = new System.Drawing.Point(90, 244);
             this.fuelUseBox.Name = "fuelUseBox";
-            this.fuelUseBox.ReadOnly = true;
             this.fuelUseBox.Size = new System.Drawing.Size(33, 31);
             this.fuelUseBox.TabIndex = 21;
             // 
@@ -311,7 +310,6 @@ namespace GT7_Randomizer
             // 
             this.tireWearBox.Location = new System.Drawing.Point(220, 244);
             this.tireWearBox.Name = "tireWearBox";
-            this.tireWearBox.ReadOnly = true;
             this.tireWearBox.Size = new System.Drawing.Size(33, 31);
             this.tireWearBox.TabIndex = 22;
             // 
@@ -389,7 +387,7 @@ namespace GT7_Randomizer
             // 
             // weatherBox
             // 
-            this.weatherBox.Location = new System.Drawing.Point(427, 247);
+            this.weatherBox.Location = new System.Drawing.Point(451, 248);
             this.weatherBox.Name = "weatherBox";
             this.weatherBox.Size = new System.Drawing.Size(150, 31);
             this.weatherBox.TabIndex = 35;
@@ -397,7 +395,7 @@ namespace GT7_Randomizer
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(342, 250);
+            this.label12.Location = new System.Drawing.Point(366, 251);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(77, 25);
             this.label12.TabIndex = 36;
@@ -414,17 +412,17 @@ namespace GT7_Randomizer
             this.bopCheck.Text = "BoP?";
             this.bopCheck.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // bopBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(352, 209);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(47, 31);
-            this.textBox4.TabIndex = 38;
+            this.bopBox.Location = new System.Drawing.Point(376, 210);
+            this.bopBox.Name = "bopBox";
+            this.bopBox.Size = new System.Drawing.Size(47, 31);
+            this.bopBox.TabIndex = 38;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(303, 213);
+            this.label13.Location = new System.Drawing.Point(327, 214);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(43, 25);
             this.label13.TabIndex = 39;
@@ -469,7 +467,7 @@ namespace GT7_Randomizer
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(405, 212);
+            this.label14.Location = new System.Drawing.Point(429, 213);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(84, 25);
             this.label14.TabIndex = 43;
@@ -477,7 +475,7 @@ namespace GT7_Randomizer
             // 
             // categoryBox
             // 
-            this.categoryBox.Location = new System.Drawing.Point(495, 210);
+            this.categoryBox.Location = new System.Drawing.Point(519, 211);
             this.categoryBox.Name = "categoryBox";
             this.categoryBox.Size = new System.Drawing.Size(82, 31);
             this.categoryBox.TabIndex = 44;
@@ -538,7 +536,7 @@ namespace GT7_Randomizer
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(290, 327);
+            this.label17.Location = new System.Drawing.Point(314, 328);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(129, 25);
             this.label17.TabIndex = 51;
@@ -546,7 +544,7 @@ namespace GT7_Randomizer
             // 
             // timeMultiplierBox
             // 
-            this.timeMultiplierBox.Location = new System.Drawing.Point(427, 327);
+            this.timeMultiplierBox.Location = new System.Drawing.Point(451, 328);
             this.timeMultiplierBox.Name = "timeMultiplierBox";
             this.timeMultiplierBox.Size = new System.Drawing.Size(150, 31);
             this.timeMultiplierBox.TabIndex = 52;
@@ -565,7 +563,7 @@ namespace GT7_Randomizer
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(264, 290);
+            this.label18.Location = new System.Drawing.Point(288, 291);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(179, 25);
             this.label18.TabIndex = 54;
@@ -573,7 +571,7 @@ namespace GT7_Randomizer
             // 
             // rollingStartDistanceBox
             // 
-            this.rollingStartDistanceBox.Location = new System.Drawing.Point(449, 290);
+            this.rollingStartDistanceBox.Location = new System.Drawing.Point(473, 291);
             this.rollingStartDistanceBox.Name = "rollingStartDistanceBox";
             this.rollingStartDistanceBox.Size = new System.Drawing.Size(128, 31);
             this.rollingStartDistanceBox.TabIndex = 55;
@@ -600,7 +598,7 @@ namespace GT7_Randomizer
             this.Controls.Add(this.fuelMultiplierBox);
             this.Controls.Add(this.maxLapBox);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.bopBox);
             this.Controls.Add(this.bopCheck);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.weatherBox);
@@ -683,7 +681,7 @@ namespace GT7_Randomizer
         private System.Windows.Forms.TextBox weatherBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox bopCheck;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox bopBox;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown maxLapBox;
         private System.Windows.Forms.NumericUpDown fuelMultiplierBox;

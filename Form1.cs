@@ -15,14 +15,14 @@ namespace GT7_Randomizer
         //an array of all the times of day in the game. Unfortunately, not every track supports these, and
         //therefore, may not be used in version 1. I'm putting them in here so I don't have to look them up
         //again for when I do use them #responsibleprogrammer
-        string[] timeOfDay = {"Early Dawn", "Dawn", "Sunrise", "Early Morning",
+        string[] timeOfDayList = {"Early Dawn", "Dawn", "Sunrise", "Early Morning",
 "Late Morning", "Afternoon", "Evening", "Sunset", "Twilight", "Night", "Midnight"};
 
 
         //an array of all the weather options in the game. Unfortunately, not every track supports rain
         //(the RXX ones) and so I am unsure how I will implement these for the tracks that support it
         //versus the tracks that do not
-        string[] weather = {"S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15",
+        string[] weatherList = {"S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15",
                             "S16", "S17", "S18", "C01", "C02", "C03", "C04", "C05", "C06", 
                             "R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08"};
 
@@ -36,13 +36,25 @@ namespace GT7_Randomizer
         
         int counter = 1;
 
-        //This is a test
+        
         //a class for drivers to use for the listview
         class driver
         {
             public int number { get; set; }
             public string name { get; set; }
             public string car { get; set; }
+        }
+
+        //a class for tracks for a future listview use
+        class track
+        {
+            //this will be for if it supports rain or not. If it does, the program will push the rain choices
+            //into this list as well as the sunny/cloudy choices
+            public List<string> weather { get; set; }
+
+            //Not every track supports every time of day. This allows for a fluid list of the supported
+            //times for when randomization comes
+            public List<string> timeOfDay { get; set; }
         }
 
         public Form1()
@@ -257,7 +269,7 @@ namespace GT7_Randomizer
 
             if (maxLapBox.Value != 0)
             {
-                int laps = rnd.Next(Decimal.ToInt32(maxLapBox.Value) + 1);
+                int laps = rnd.Next(Decimal.ToInt32(maxLapBox.Value)) + 1;
                 lapBox.Text = laps.ToString();
 
             } else
@@ -314,7 +326,43 @@ namespace GT7_Randomizer
                 rollingStartDistanceBox.Text = "N/A";
             }
 
-            //weather
+            //BoP Checkbox check. If checked, if the random bop variable is 1, then bop is on, if it's 0, it's off
+
+            if (bopCheck.Checked)
+            {
+                int bop = rnd.Next(1);
+
+                if (bop == 1)
+                {
+                    bopBox.Text = "On";
+
+                } else
+                {
+                    bopBox.Text = "Off";
+                }
+
+            } else
+            {
+                bopBox.Text = "N/A";
+            }
+
+            //weather - this will be just a random choice of the time of day and weather arrays until I can implement
+            //the good good in version 2
+
+            if (weatherCheck.Checked)
+            {
+
+                int weatherChoice = rnd.Next(weatherList.Length);
+                int timeOfDayChoice = rnd.Next(timeOfDayList.Length);
+
+                weatherBox.Text = weatherList[weatherChoice];
+                startTimeBox.Text = timeOfDayList[timeOfDayChoice];
+
+            } else
+            {
+                weatherBox.Text = "N/A";
+                startTimeBox.Text = "N/A";
+            }
 
             return "error choosing track";
         }
