@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "GT7 Randomizer/1.0.0": {
+        "runtime": {
+          "GT7 Randomizer.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GT7 Randomizer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,5 @@
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer.exe
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer.dll
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer.deps.json
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer.runtimeconfig.json
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer.pdb
