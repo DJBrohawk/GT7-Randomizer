@@ -36,3 +36,4 @@ C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\ref\GT7 Randomizer.dll
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.pdb
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7 Randomizer.genruntimeconfig.cache
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7_Randomizer.TrackForm.resources

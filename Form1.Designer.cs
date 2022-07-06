@@ -46,8 +46,6 @@ namespace GT7_Randomizer
             this.DriverName = new System.Windows.Forms.ColumnHeader();
             this.Car = new System.Windows.Forms.ColumnHeader();
             this.clearListBtn = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.trackBox = new System.Windows.Forms.TextBox();
             this.randomRaceBtn = new System.Windows.Forms.Button();
@@ -84,6 +82,13 @@ namespace GT7_Randomizer
             this.startTypeCheck = new System.Windows.Forms.CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.rollingStartDistanceBox = new System.Windows.Forms.TextBox();
+            this.timeMultiplierCheck = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.raceTypeBox = new System.Windows.Forms.TextBox();
+            this.raceLengthCheck = new System.Windows.Forms.CheckBox();
+            this.trackConfigureBtn = new System.Windows.Forms.Button();
+            this.trackGenTestBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.maxLapBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fuelMultiplierBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tireMultiplierBox)).BeginInit();
@@ -233,24 +238,6 @@ namespace GT7_Randomizer
             this.clearListBtn.UseVisualStyleBackColor = true;
             this.clearListBtn.Click += new System.EventHandler(this.clearListBtn_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(891, 395);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 25);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "1)";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(888, 474);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(27, 25);
-            this.label4.TabIndex = 15;
-            this.label4.Text = "2)";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -281,34 +268,34 @@ namespace GT7_Randomizer
             // 
             this.weatherCheck.AutoSize = true;
             this.weatherCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.weatherCheck.Location = new System.Drawing.Point(790, 194);
+            this.weatherCheck.Location = new System.Drawing.Point(798, 252);
             this.weatherCheck.Name = "weatherCheck";
-            this.weatherCheck.Size = new System.Drawing.Size(111, 29);
+            this.weatherCheck.Size = new System.Drawing.Size(103, 29);
             this.weatherCheck.TabIndex = 19;
-            this.weatherCheck.Text = "Weather?";
+            this.weatherCheck.Text = "Weather";
             this.weatherCheck.UseVisualStyleBackColor = true;
             // 
             // fuelTireCheck
             // 
             this.fuelTireCheck.AutoSize = true;
             this.fuelTireCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.fuelTireCheck.Location = new System.Drawing.Point(743, 229);
+            this.fuelTireCheck.Location = new System.Drawing.Point(751, 284);
             this.fuelTireCheck.Name = "fuelTireCheck";
-            this.fuelTireCheck.Size = new System.Drawing.Size(158, 29);
+            this.fuelTireCheck.Size = new System.Drawing.Size(150, 29);
             this.fuelTireCheck.TabIndex = 20;
-            this.fuelTireCheck.Text = "Fuel/Tire Wear?";
+            this.fuelTireCheck.Text = "Fuel/Tire Wear";
             this.fuelTireCheck.UseVisualStyleBackColor = true;
             // 
             // fuelUseBox
             // 
-            this.fuelUseBox.Location = new System.Drawing.Point(90, 244);
+            this.fuelUseBox.Location = new System.Drawing.Point(90, 248);
             this.fuelUseBox.Name = "fuelUseBox";
             this.fuelUseBox.Size = new System.Drawing.Size(33, 31);
             this.fuelUseBox.TabIndex = 21;
             // 
             // tireWearBox
             // 
-            this.tireWearBox.Location = new System.Drawing.Point(220, 244);
+            this.tireWearBox.Location = new System.Drawing.Point(220, 247);
             this.tireWearBox.Name = "tireWearBox";
             this.tireWearBox.Size = new System.Drawing.Size(33, 31);
             this.tireWearBox.TabIndex = 22;
@@ -316,7 +303,7 @@ namespace GT7_Randomizer
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 247);
+            this.label6.Location = new System.Drawing.Point(6, 250);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 25);
             this.label6.TabIndex = 23;
@@ -325,7 +312,7 @@ namespace GT7_Randomizer
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(129, 247);
+            this.label7.Location = new System.Drawing.Point(129, 250);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 25);
             this.label7.TabIndex = 24;
@@ -333,7 +320,7 @@ namespace GT7_Randomizer
             // 
             // lapBox
             // 
-            this.lapBox.Location = new System.Drawing.Point(188, 209);
+            this.lapBox.Location = new System.Drawing.Point(286, 211);
             this.lapBox.Name = "lapBox";
             this.lapBox.Size = new System.Drawing.Size(40, 31);
             this.lapBox.TabIndex = 25;
@@ -341,36 +328,36 @@ namespace GT7_Randomizer
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 212);
+            this.label8.Location = new System.Drawing.Point(185, 213);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(176, 25);
+            this.label8.Size = new System.Drawing.Size(97, 25);
             this.label8.TabIndex = 27;
-            this.label8.Text = "Laps/Endurance Min.";
+            this.label8.Text = "Laps/Mins.";
             // 
             // enduranceCheck
             // 
             this.enduranceCheck.AutoSize = true;
             this.enduranceCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.enduranceCheck.Location = new System.Drawing.Point(731, 162);
+            this.enduranceCheck.Location = new System.Drawing.Point(784, 217);
             this.enduranceCheck.Name = "enduranceCheck";
-            this.enduranceCheck.Size = new System.Drawing.Size(170, 29);
+            this.enduranceCheck.Size = new System.Drawing.Size(117, 29);
             this.enduranceCheck.TabIndex = 29;
-            this.enduranceCheck.Text = "Endurance Race?";
+            this.enduranceCheck.Text = "Race Type";
             this.enduranceCheck.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(600, 272);
+            this.label9.Location = new System.Drawing.Point(688, 358);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(256, 25);
+            this.label9.Size = new System.Drawing.Size(169, 25);
             this.label9.TabIndex = 30;
-            this.label9.Text = "Max # of Laps/Endurance Mins";
+            this.label9.Text = "Max # of Laps/Mins";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(661, 308);
+            this.label10.Location = new System.Drawing.Point(661, 393);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(195, 25);
             this.label10.TabIndex = 31;
@@ -379,7 +366,7 @@ namespace GT7_Randomizer
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(655, 347);
+            this.label11.Location = new System.Drawing.Point(655, 432);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(202, 25);
             this.label11.TabIndex = 32;
@@ -405,11 +392,11 @@ namespace GT7_Randomizer
             // 
             this.bopCheck.AutoSize = true;
             this.bopCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bopCheck.Location = new System.Drawing.Point(824, 127);
+            this.bopCheck.Location = new System.Drawing.Point(832, 182);
             this.bopCheck.Name = "bopCheck";
-            this.bopCheck.Size = new System.Drawing.Size(77, 29);
+            this.bopCheck.Size = new System.Drawing.Size(69, 29);
             this.bopCheck.TabIndex = 37;
-            this.bopCheck.Text = "BoP?";
+            this.bopCheck.Text = "BoP";
             this.bopCheck.UseVisualStyleBackColor = true;
             // 
             // bopBox
@@ -430,7 +417,7 @@ namespace GT7_Randomizer
             // 
             // maxLapBox
             // 
-            this.maxLapBox.Location = new System.Drawing.Point(863, 269);
+            this.maxLapBox.Location = new System.Drawing.Point(863, 354);
             this.maxLapBox.Name = "maxLapBox";
             this.maxLapBox.Size = new System.Drawing.Size(55, 31);
             this.maxLapBox.TabIndex = 40;
@@ -442,7 +429,7 @@ namespace GT7_Randomizer
             // 
             // fuelMultiplierBox
             // 
-            this.fuelMultiplierBox.Location = new System.Drawing.Point(863, 306);
+            this.fuelMultiplierBox.Location = new System.Drawing.Point(863, 391);
             this.fuelMultiplierBox.Name = "fuelMultiplierBox";
             this.fuelMultiplierBox.Size = new System.Drawing.Size(55, 31);
             this.fuelMultiplierBox.TabIndex = 41;
@@ -454,7 +441,7 @@ namespace GT7_Randomizer
             // 
             // tireMultiplierBox
             // 
-            this.tireMultiplierBox.Location = new System.Drawing.Point(863, 343);
+            this.tireMultiplierBox.Location = new System.Drawing.Point(863, 428);
             this.tireMultiplierBox.Name = "tireMultiplierBox";
             this.tireMultiplierBox.Size = new System.Drawing.Size(55, 31);
             this.tireMultiplierBox.TabIndex = 42;
@@ -484,11 +471,11 @@ namespace GT7_Randomizer
             // 
             this.categoryCheck.AutoSize = true;
             this.categoryCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.categoryCheck.Location = new System.Drawing.Point(710, 92);
+            this.categoryCheck.Location = new System.Drawing.Point(791, 147);
             this.categoryCheck.Name = "categoryCheck";
-            this.categoryCheck.Size = new System.Drawing.Size(191, 29);
+            this.categoryCheck.Size = new System.Drawing.Size(110, 29);
             this.categoryCheck.TabIndex = 45;
-            this.categoryCheck.Text = "Random Category?";
+            this.categoryCheck.Text = "Category";
             this.categoryCheck.UseVisualStyleBackColor = true;
             // 
             // deleteDriverBtn
@@ -553,11 +540,11 @@ namespace GT7_Randomizer
             // 
             this.startTypeCheck.AutoSize = true;
             this.startTypeCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.startTypeCheck.Location = new System.Drawing.Point(704, 57);
+            this.startTypeCheck.Location = new System.Drawing.Point(785, 112);
             this.startTypeCheck.Name = "startTypeCheck";
-            this.startTypeCheck.Size = new System.Drawing.Size(197, 29);
+            this.startTypeCheck.Size = new System.Drawing.Size(116, 29);
             this.startTypeCheck.TabIndex = 53;
-            this.startTypeCheck.Text = "Random Start Type?";
+            this.startTypeCheck.Text = "Start Type";
             this.startTypeCheck.UseVisualStyleBackColor = true;
             // 
             // label18
@@ -571,16 +558,93 @@ namespace GT7_Randomizer
             // 
             // rollingStartDistanceBox
             // 
-            this.rollingStartDistanceBox.Location = new System.Drawing.Point(473, 291);
+            this.rollingStartDistanceBox.Location = new System.Drawing.Point(473, 288);
             this.rollingStartDistanceBox.Name = "rollingStartDistanceBox";
             this.rollingStartDistanceBox.Size = new System.Drawing.Size(128, 31);
             this.rollingStartDistanceBox.TabIndex = 55;
+            // 
+            // timeMultiplierCheck
+            // 
+            this.timeMultiplierCheck.AutoSize = true;
+            this.timeMultiplierCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.timeMultiplierCheck.Location = new System.Drawing.Point(746, 77);
+            this.timeMultiplierCheck.Name = "timeMultiplierCheck";
+            this.timeMultiplierCheck.Size = new System.Drawing.Size(155, 29);
+            this.timeMultiplierCheck.TabIndex = 56;
+            this.timeMultiplierCheck.Text = "Time Multiplier";
+            this.timeMultiplierCheck.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(705, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(213, 25);
+            this.label3.TabIndex = 57;
+            this.label3.Text = "Randomization Options";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 212);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(91, 25);
+            this.label4.TabIndex = 58;
+            this.label4.Text = "Race Type";
+            // 
+            // raceTypeBox
+            // 
+            this.raceTypeBox.Location = new System.Drawing.Point(103, 211);
+            this.raceTypeBox.Name = "raceTypeBox";
+            this.raceTypeBox.Size = new System.Drawing.Size(76, 31);
+            this.raceTypeBox.TabIndex = 59;
+            // 
+            // raceLengthCheck
+            // 
+            this.raceLengthCheck.AutoSize = true;
+            this.raceLengthCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.raceLengthCheck.Location = new System.Drawing.Point(782, 319);
+            this.raceLengthCheck.Name = "raceLengthCheck";
+            this.raceLengthCheck.Size = new System.Drawing.Size(119, 29);
+            this.raceLengthCheck.TabIndex = 60;
+            this.raceLengthCheck.Text = "Laps/Mins";
+            this.raceLengthCheck.UseVisualStyleBackColor = true;
+            // 
+            // trackConfigureBtn
+            // 
+            this.trackConfigureBtn.Location = new System.Drawing.Point(310, 428);
+            this.trackConfigureBtn.Name = "trackConfigureBtn";
+            this.trackConfigureBtn.Size = new System.Drawing.Size(112, 34);
+            this.trackConfigureBtn.TabIndex = 61;
+            this.trackConfigureBtn.Text = "Form 2";
+            this.trackConfigureBtn.UseVisualStyleBackColor = true;
+            this.trackConfigureBtn.Click += new System.EventHandler(this.trackConfigureBtn_Click);
+            // 
+            // trackGenTestBtn
+            // 
+            this.trackGenTestBtn.Location = new System.Drawing.Point(473, 432);
+            this.trackGenTestBtn.Name = "trackGenTestBtn";
+            this.trackGenTestBtn.Size = new System.Drawing.Size(112, 34);
+            this.trackGenTestBtn.TabIndex = 62;
+            this.trackGenTestBtn.Text = "Track Gen Test";
+            this.trackGenTestBtn.UseVisualStyleBackColor = true;
+            this.trackGenTestBtn.Click += new System.EventHandler(this.trackGenTestBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1243, 589);
+            this.Controls.Add(this.trackGenTestBtn);
+            this.Controls.Add(this.trackConfigureBtn);
+            this.Controls.Add(this.raceLengthCheck);
+            this.Controls.Add(this.raceTypeBox);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.timeMultiplierCheck);
             this.Controls.Add(this.rollingStartDistanceBox);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.startTypeCheck);
@@ -617,8 +681,6 @@ namespace GT7_Randomizer
             this.Controls.Add(this.randomRaceBtn);
             this.Controls.Add(this.trackBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.clearListBtn);
             this.Controls.Add(this.driverList);
             this.Controls.Add(this.customRaceBtn);
@@ -661,8 +723,6 @@ namespace GT7_Randomizer
         private System.Windows.Forms.ColumnHeader DriverName;
         private System.Windows.Forms.ColumnHeader Car;
         private System.Windows.Forms.Button clearListBtn;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox trackBox;
         private System.Windows.Forms.Button randomRaceBtn;
@@ -699,6 +759,13 @@ namespace GT7_Randomizer
         private System.Windows.Forms.CheckBox startTypeCheck;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox rollingStartDistanceBox;
+        private System.Windows.Forms.CheckBox timeMultiplierCheck;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox raceTypeBox;
+        private System.Windows.Forms.CheckBox raceLengthCheck;
+        private System.Windows.Forms.Button trackConfigureBtn;
+        private System.Windows.Forms.Button trackGenTestBtn;
     }
 }
 

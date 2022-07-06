@@ -36,6 +36,12 @@ namespace GT7_Randomizer
         
         int counter = 1;
 
+        //testing this for form 2
+        List<ListViewItem> trackList = new List<ListViewItem>();
+        TrackForm tf = new TrackForm();
+
+        public List<track> trackListTest { get; set; }
+        List<track> baseTrackList = new List<track>();
         
         //a class for drivers to use for the listview
         class driver
@@ -46,7 +52,7 @@ namespace GT7_Randomizer
         }
 
         //a class for tracks for a future listview use
-        class track
+        public class track
         {
             //this will be for if it supports rain or not. If it does, the program will push the rain choices
             //into this list as well as the sunny/cloudy choices
@@ -54,18 +60,38 @@ namespace GT7_Randomizer
 
             //Not every track supports every time of day. This allows for a fluid list of the supported
             //times for when randomization comes
-            public List<string> timeOfDay { get; set; }
+           public List<string> timeOfDay { get; set; }
+
+            public string name { get; set; }
+
+            public string supportsRain { get; set; }
+
+            public string supportsNight { get; set; }
+
+            public track (string? nm, string? rain, string? night)
+            {
+                name = nm;
+                supportsRain = rain;
+                supportsNight = night;
+
+            }
+
+            public track() { }
         }
 
         public Form1()
         {
             
             InitializeComponent();
+
+            tf.Closed += (sender, args) => this.trackListTest = tf.getTrackList();
         }   
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
-            
+            loadTrackConfigure();
+
+              
         }
 
         //generates a car using Gr3List.txt
@@ -267,15 +293,14 @@ namespace GT7_Randomizer
 
             //lap/endurance amount - default value is 10
 
-            if (maxLapBox.Value != 0)
+            if (raceLengthCheck.Checked)
             {
                 int laps = rnd.Next(Decimal.ToInt32(maxLapBox.Value)) + 1;
                 lapBox.Text = laps.ToString();
 
             } else
             {
-                int laps = rnd.Next(10) + 1;
-                lapBox.Text = laps.ToString();
+                lapBox.Text = "N/A";
             }
 
             //Randomize the category if the category box is checked. If it isn't checked
@@ -539,6 +564,73 @@ namespace GT7_Randomizer
             }
         }
 
+        private void loadTrackConfigure()
+        {
+            //create array of listview items
+
+            foreach (string line in System.IO.File.ReadLines(@"c:\temp\TrackListTest.txt"))
+            {
+                //load in the comma delimited file, separating each value into bits of an array.
+                //Each track must have the same number of comma delimited
+                //things per line, otherwise this will get messy and I'm no genius programmer here
+                //as of 7/5/22, there will be X number of things per line
+                //col[0] = Track Name
+                //col[1] = Supports Rain Yes/No
+                //col[2] = Supports Night Driving Yes/No
+                //future additions may include track length
+
+                string[] col = line.Split(',');
+
+                //we have to create a list of tracks by default in the event a person doesn't use
+                //the configuration form, so we'll load all tracks into a list of track objects
+
+
+            
+                    track test = new track(col[0],col[1],col[2]);
+
+                    baseTrackList.Add(test);
+
+
+                //like in the AddDriver method in Form1, we're going to use an array
+                //(in this case, the split line from the text file) to insert data into the listview
+                //creating a ListViewItem object to accomplish this
+                ListViewItem item;
+
+                item = new ListViewItem(col);
+                item.Checked = true;
+                trackList.Add(item);
+
+            }
+
+
+            //this is how we initialize the track list that will go between forms
+            //there's probably a better way to do this but in my frustration over
+            //resolving a null reference error, I got this to work.
+            trackListTest = baseTrackList;
+
+            //set array of listview items in the tf object
+            tf.lv = trackList;
+
+            //form 2 takes those items and puts them in the listview
+
+            //items that are unchecked there, stay unchecked, theoretically.
+
+        }
+
+        //function to set the track list from another form
+        public void setTrackList(List<track> trkList)
+        {
+            trackListTest = trkList;
+        }
+
+        //function to clear the track list from another form
+        public List<track> getTrackList()
+        {
+            return trackListTest;
+        }
+
+
+
         private void gr3RaceBtn_Click(object sender, EventArgs e)
         {
             gr3Race();
@@ -577,6 +669,26 @@ namespace GT7_Randomizer
                 addDriver();
                 
             }
+        }
+
+        private void trackConfigureBtn_Click(object sender, EventArgs e)
+        {
+            //create a new track form, which gets the track list passed to it via list view item
+            tf.setTrackList(trackListTest);
+
+            tf.ShowDialog();
+            
+        }
+
+        private void trackGenTestBtn_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+
+            int trk = rnd.Next(trackListTest.Count);
+
+            trackBox.Text = trackListTest[trk].name;
+
+
         }
     }
 }
