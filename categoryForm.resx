@@ -57,15 +57,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="label2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Hello! Welcome to DJ Brohawk's quick and easy car/track randomizer for Gran Turismo 7!
-
-If you haven't used this before, please check out the included file, "ReadMe.txt",
-which contains all of the information you'll need to use this app.
-
-Have fun! :)</value>
-  </data>
 </root>

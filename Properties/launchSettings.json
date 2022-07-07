@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GT7 Randomizer": {
+      "commandName": "Project",
+      "workingDirectory": "$(ProjectDir)"
+    }
+  }
+}

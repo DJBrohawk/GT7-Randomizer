@@ -7,30 +7,75 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GT7_Randomizer
 {
     public partial class Form1 : Form
     {
-        //an array of all the times of day in the game. Unfortunately, not every track supports these, and
-        //therefore, may not be used in version 1. I'm putting them in here so I don't have to look them up
-        //again for when I do use them #responsibleprogrammer
-        string[] timeOfDayList = {"Early Dawn", "Dawn", "Sunrise", "Early Morning",
-"Late Morning", "Afternoon", "Evening", "Sunset", "Twilight", "Night", "Midnight"};
 
+        //trust me when I say you may want to avert your gaze if you expand this
+        //I couldn't think of a better way to handle the E L E V E N different combinations
+        //that PD somehow managed to throw at us
 
-        //an array of all the weather options in the game. Unfortunately, not every track supports rain
-        //(the RXX ones) and so I am unsure how I will implement these for the tracks that support it
-        //versus the tracks that do not
-        string[] weatherList = {"S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15",
-                            "S16", "S17", "S18", "C01", "C02", "C03", "C04", "C05", "C06", 
-                            "R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08"};
+        //0-4 in the array are night options
+        public string[][] jaggedTimeOfDay = new string[][]
+
+        {
+            //because of the way I did this, there's no order to this list
+            //so the night calculations will be weird. Sorry, future me.
+            //0 is the list of them all
+
+            //0, night
+            new string[]{"Early Dawn", "Dawn", "Sunrise", "Early Morning",
+"Late Morning", "Afternoon", "Evening", "Sunset", "Twilight", "Night", "Midnight"},
+            //1, night
+            new string[]{ "Dawn", "Sunrise", "Early Morning", "Late Morning",
+                "Afternoon", "Evening", "Sunset", "Twilight", "Night"},
+            //2, night
+            new string[]{ "Sunrise", "Early Morning", "Late Morning", "Afternoon",
+                "Evening", "Sunset", "Twilight", "Night"},
+            //3, night
+            new string[]{ "Early Morning", "Late Morning", "Afternoon", "Evening", "Sunset", "Twilight", "Night"},
+            //4, night
+            new string[]{ "Early Dawn", "Dawn", "Sunrise", "Early Morning", "Late Morning",
+                "Afternoon", "Evening", "Sunset", "Twilight", "Night"},    
+            //5
+            new string[]{ "Early Morning", "Late Morning", "Afternoon", "Evening", "Sunset"},
+            //6
+            new string[]{ "Early Morning", "Late Morning", "Afternoon", "Evening", "Sunset", "Twilight"},
+            //7
+            new string[]{ "Sunrise", "Early Morning", "Late Morning", "Afternoon", "Evening", "Sunset", "Twilight"},
+            //8
+            new string[]{ "Early Morning", "Late Morning", "Afternoon", "Evening"},
+            //9
+            new string[]{ "Dawn", "Sunrise", "Early Morning", "Late Morning", "Afternoon", "Evening", "Sunset", "Twilight"},
+            //10
+            new string[]{ "Early Dawn", "Dawn", "Sunrise", "Early Morning", "Late Morning", "Afternoon", 
+                "Evening", "Sunset", "Twilight"}
+
+        };
+
+        //doing a similar thing for the weather, but there's only two arrays instead of 11.
+
+        public string[][] jaggedWeatherList = new string[][]
+        {
+            //0, no rain
+            new string[] {"S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15",
+                            "S16", "S17", "S18", "C01", "C02", "C03", "C04", "C05", "C06"},
+            //1, rain
+            new string[] {"S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15",
+                            "S16", "S17", "S18", "C01", "C02", "C03", "C04", "C05", "C06",
+                            "R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08"}
+        };
+
+      
 
         //Initialize global lists to be used in functions
         List<int> gr3Repeats = new List<int>();
         List<int> gr4Repeats = new List<int>();
         List<int> customRepeats = new List<int>();
-        List<int> trackRepeats = new List<int>();
+        List<string> trackRepeats = new List<string>();
         //List<int> categoryRepeats = new List<int>(); //in here in the event I want to do no repeats for categories
         List<driver> drivers = new List<driver>();
         
@@ -40,7 +85,7 @@ namespace GT7_Randomizer
         List<ListViewItem> trackList = new List<ListViewItem>();
         TrackForm tf = new TrackForm();
 
-        public List<track> trackListTest { get; set; }
+        public List<track> trackListNew { get; set; }
         List<track> baseTrackList = new List<track>();
         
         //a class for drivers to use for the listview
@@ -60,7 +105,7 @@ namespace GT7_Randomizer
 
             //Not every track supports every time of day. This allows for a fluid list of the supported
             //times for when randomization comes
-           public List<string> timeOfDay { get; set; }
+            public List<string> timeOfDay { get; set; }
 
             public string name { get; set; }
 
@@ -68,15 +113,84 @@ namespace GT7_Randomizer
 
             public string supportsNight { get; set; }
 
-            public track (string? nm, string? rain, string? night)
+            public track (string nm, string rain, string night, List<string> rainList, List<string> timeOfDayList)
             {
+
                 name = nm;
                 supportsRain = rain;
                 supportsNight = night;
+                weather = rainList;
+                timeOfDay = timeOfDayList;
+
 
             }
 
-            public track() { }
+            public track() {}
+
+            public string getWeather(bool forceRain) {
+
+                Random rnd = new Random();
+                int weatherNumber = rnd.Next(8) + 23;
+               
+                //this handles occasions where force rain is on and the track doesn't have rain
+                if (weather.Count <= 25)
+                {
+                    return getWeather();
+                }
+
+                if (forceRain == true)
+                {
+                    return weather[weatherNumber];
+                } else
+                {
+                   return getWeather();
+                }
+            
+            
+            
+            }
+
+            public string getWeather() {
+
+                Random rnd = new Random();
+
+                int weatherNumber = rnd.Next(weather.Count);
+
+                return weather[weatherNumber];
+            
+            }
+
+            public string getTimeOfDay(bool forceNight)
+            {
+                if (forceNight == true)
+                {
+
+                    if (timeOfDay[timeOfDay.Count - 1] == "Night" || timeOfDay[timeOfDay.Count - 1] == "Midnight")
+                    {
+                        return timeOfDay[timeOfDay.Count - 1];
+                    }
+                    else
+                    {
+                        return getTimeOfDay();
+                    }
+
+                } else
+                {
+                    return getTimeOfDay();
+                }
+            }
+
+            public string getTimeOfDay()
+            {
+
+                Random rnd = new Random();
+
+                int timeChoice = rnd.Next(timeOfDay.Count);
+
+                return timeOfDay[timeChoice];
+
+
+            }
         }
 
         public Form1()
@@ -84,11 +198,16 @@ namespace GT7_Randomizer
             
             InitializeComponent();
 
-            tf.Closed += (sender, args) => this.trackListTest = tf.getTrackList();
+            //event listener that listens for when the track form is closed. When it is, we pull the track list
+            //from the track configuration form, so that we use the updated list with our calculations
+            tf.Closed += (sender, args) => this.trackListNew = tf.getTrackList();
         }   
 
         public void Form1_Load(object sender, EventArgs e)
         {
+            //on load, this loads the data into the Track Configure Form. I think this is the only way
+            //to do this so that the form remembers which boxes are checked and which ones aren't
+            //Actually, I'm sure there's a better way, but #babyprogrammer
             loadTrackConfigure();
 
               
@@ -221,17 +340,9 @@ namespace GT7_Randomizer
         private string trackGenerate()
         {
 
-
-            List<string> trackList = new List<string>();
             Random rnd = new Random();
             Boolean repeat = true;
 
-
-            //read each line of the track list text file into an array
-            foreach (string line in System.IO.File.ReadLines(@"c:\temp\TrackList.txt"))
-            {
-                trackList.Add(line);
-            }
 
             //for simplicity, there will be no repeats after 5. This can be adjusted in the code
             //or maybe via a variable down the line
@@ -243,13 +354,17 @@ namespace GT7_Randomizer
 
             do
             {
-                int track = rnd.Next(trackList.Count);
+                int track = rnd.Next(trackListNew.Count);
+                string trackName = trackListNew[track].name;
 
-                if (!trackRepeats.Contains(track))
+                weatherText(trackListNew[track]);
+                timeOfDayText(trackListNew[track]);
+
+                if (!trackRepeats.Contains(trackName))
                 {
-                    trackRepeats.Add(track);
+                    trackRepeats.Add(trackName);
                     repeat = false;
-                    trackBox.Text = trackList[track];
+                    trackBox.Text = trackListNew[track].name;
                 }
 
             } while (repeat == true);
@@ -271,8 +386,6 @@ namespace GT7_Randomizer
                 { 
                     fuelUseBox.Text = fuel.ToString(); 
                 }
-
-
 
                 if (tireMultiplierBox.Value <= 0 || tire <= 0) {
 
@@ -371,25 +484,59 @@ namespace GT7_Randomizer
                 bopBox.Text = "N/A";
             }
 
-            //weather - this will be just a random choice of the time of day and weather arrays until I can implement
-            //the good good in version 2
+            return "error choosing track";
+        }
+
+
+        //the below two functions are to get the text for weather and start time from the object that 
+        //"wins the random pick lottery" - had to do it this way b/c of the no repeats rule
+        private void timeOfDayText(track track)
+        {
+
+            if (startTimeCheck.Checked)
+            {
+
+                if (forceNightCheck.Checked)
+                {
+                    startTimeBox.Text = track.getTimeOfDay(true);
+                }
+                else
+                {
+                    startTimeBox.Text = track.getTimeOfDay();
+                }
+
+            }
+            else
+            {
+
+                startTimeBox.Text = "N/A";
+
+            }
+        }
+
+        private void weatherText(track track)
+        {
+
+            //weather - this uses the getWeather function in the track object to get random weather
+            //from the options the track has
 
             if (weatherCheck.Checked)
             {
 
-                int weatherChoice = rnd.Next(weatherList.Length);
-                int timeOfDayChoice = rnd.Next(timeOfDayList.Length);
+                if (forceRainCheck.Checked)
+                {
+                   weatherBox.Text =  track.getWeather(true);
 
-                weatherBox.Text = weatherList[weatherChoice];
-                startTimeBox.Text = timeOfDayList[timeOfDayChoice];
+                } else
+                {
+                    weatherBox.Text = track.getWeather();
+                }
 
-            } else
+            }
+            else
             {
                 weatherBox.Text = "N/A";
-                startTimeBox.Text = "N/A";
             }
-
-            return "error choosing track";
         }
 
         //clears the whole list of drivers
@@ -566,17 +713,22 @@ namespace GT7_Randomizer
 
         private void loadTrackConfigure()
         {
-            //create array of listview items
+            //initialize some variables to determine what goes into the listview on the track form
 
-            foreach (string line in System.IO.File.ReadLines(@"c:\temp\TrackListTest.txt"))
+            int rainInt = 0;
+            int nightInt = 0;
+            string rainStr = "No";
+            string nightStr = "No";
+
+            foreach (string line in System.IO.File.ReadLines("Data/BaseTrackList.txt"))
             {
                 //load in the comma delimited file, separating each value into bits of an array.
                 //Each track must have the same number of comma delimited
                 //things per line, otherwise this will get messy and I'm no genius programmer here
-                //as of 7/5/22, there will be X number of things per line
+                //as of 7/6/22, there will be 3 number of things per line
                 //col[0] = Track Name
                 //col[1] = Supports Rain Yes/No
-                //col[2] = Supports Night Driving Yes/No
+                //col[2] = The daytime configuration number
                 //future additions may include track length
 
                 string[] col = line.Split(',');
@@ -584,11 +736,32 @@ namespace GT7_Randomizer
                 //we have to create a list of tracks by default in the event a person doesn't use
                 //the configuration form, so we'll load all tracks into a list of track objects
 
+               
+   
+                rainInt = Int32.Parse(col[1]);
+                nightInt = Int32.Parse(col[2]);
+                
 
-            
-                    track test = new track(col[0],col[1],col[2]);
+                if (rainInt == 1)
+                {
+                    rainStr = "Yes";
+                } else
+                {
+                    rainStr = "No";
+                }
 
+                if(nightInt >= 5)
+                {
+                    nightStr = "No";
+                } else
+                {
+                    nightStr = "Yes";
+                }
+                
+                    track test = new track(col[0], rainStr, nightStr, jaggedWeatherList[rainInt].ToList(), jaggedTimeOfDay[nightInt].ToList());
                     baseTrackList.Add(test);
+              
+                   
 
 
                 //like in the AddDriver method in Form1, we're going to use an array
@@ -596,9 +769,23 @@ namespace GT7_Randomizer
                 //creating a ListViewItem object to accomplish this
                 ListViewItem item;
 
-                item = new ListViewItem(col);
+
+                //pass in an array of 5 items into the listview in the track form. The last two will be used
+                //when the main form pulls the data back
+                string[] arr = new string[5];
+
+                arr[0] = col[0];
+                arr[1] = rainStr;
+                arr[2] = nightStr;
+                arr[3] = rainInt.ToString();
+                arr[4] = nightInt.ToString();
+
+                item = new ListViewItem(arr);
                 item.Checked = true;
                 trackList.Add(item);
+
+
+
 
             }
 
@@ -606,7 +793,7 @@ namespace GT7_Randomizer
             //this is how we initialize the track list that will go between forms
             //there's probably a better way to do this but in my frustration over
             //resolving a null reference error, I got this to work.
-            trackListTest = baseTrackList;
+            trackListNew = baseTrackList;
 
             //set array of listview items in the tf object
             tf.lv = trackList;
@@ -620,16 +807,14 @@ namespace GT7_Randomizer
         //function to set the track list from another form
         public void setTrackList(List<track> trkList)
         {
-            trackListTest = trkList;
+            trackListNew = trkList;
         }
 
         //function to clear the track list from another form
         public List<track> getTrackList()
         {
-            return trackListTest;
+            return trackListNew;
         }
-
-
 
         private void gr3RaceBtn_Click(object sender, EventArgs e)
         {
@@ -674,21 +859,12 @@ namespace GT7_Randomizer
         private void trackConfigureBtn_Click(object sender, EventArgs e)
         {
             //create a new track form, which gets the track list passed to it via list view item
-            tf.setTrackList(trackListTest);
+            tf.setTrackList(trackListNew);
 
             tf.ShowDialog();
             
         }
 
-        private void trackGenTestBtn_Click(object sender, EventArgs e)
-        {
-            Random rnd = new Random();
-
-            int trk = rnd.Next(trackListTest.Count);
-
-            trackBox.Text = trackListTest[trk].name;
-
-
-        }
+       
     }
 }

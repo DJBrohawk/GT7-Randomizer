@@ -88,7 +88,9 @@ namespace GT7_Randomizer
             this.raceTypeBox = new System.Windows.Forms.TextBox();
             this.raceLengthCheck = new System.Windows.Forms.CheckBox();
             this.trackConfigureBtn = new System.Windows.Forms.Button();
-            this.trackGenTestBtn = new System.Windows.Forms.Button();
+            this.forceRainCheck = new System.Windows.Forms.CheckBox();
+            this.forceNightCheck = new System.Windows.Forms.CheckBox();
+            this.startTimeCheck = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.maxLapBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fuelMultiplierBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tireMultiplierBox)).BeginInit();
@@ -623,22 +625,47 @@ namespace GT7_Randomizer
             this.trackConfigureBtn.UseVisualStyleBackColor = true;
             this.trackConfigureBtn.Click += new System.EventHandler(this.trackConfigureBtn_Click);
             // 
-            // trackGenTestBtn
+            // forceRainCheck
             // 
-            this.trackGenTestBtn.Location = new System.Drawing.Point(473, 432);
-            this.trackGenTestBtn.Name = "trackGenTestBtn";
-            this.trackGenTestBtn.Size = new System.Drawing.Size(112, 34);
-            this.trackGenTestBtn.TabIndex = 62;
-            this.trackGenTestBtn.Text = "Track Gen Test";
-            this.trackGenTestBtn.UseVisualStyleBackColor = true;
-            this.trackGenTestBtn.Click += new System.EventHandler(this.trackGenTestBtn_Click);
+            this.forceRainCheck.AutoSize = true;
+            this.forceRainCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.forceRainCheck.Location = new System.Drawing.Point(620, 77);
+            this.forceRainCheck.Name = "forceRainCheck";
+            this.forceRainCheck.Size = new System.Drawing.Size(120, 29);
+            this.forceRainCheck.TabIndex = 63;
+            this.forceRainCheck.Text = "Force Rain";
+            this.forceRainCheck.UseVisualStyleBackColor = true;
+            // 
+            // forceNightCheck
+            // 
+            this.forceNightCheck.AutoSize = true;
+            this.forceNightCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.forceNightCheck.Location = new System.Drawing.Point(620, 112);
+            this.forceNightCheck.Name = "forceNightCheck";
+            this.forceNightCheck.Size = new System.Drawing.Size(130, 29);
+            this.forceNightCheck.TabIndex = 64;
+            this.forceNightCheck.Text = "Force Night";
+            this.forceNightCheck.UseVisualStyleBackColor = true;
+            // 
+            // startTimeCheck
+            // 
+            this.startTimeCheck.AutoSize = true;
+            this.startTimeCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.startTimeCheck.Location = new System.Drawing.Point(633, 147);
+            this.startTimeCheck.Name = "startTimeCheck";
+            this.startTimeCheck.Size = new System.Drawing.Size(117, 29);
+            this.startTimeCheck.TabIndex = 65;
+            this.startTimeCheck.Text = "Start Time";
+            this.startTimeCheck.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1243, 589);
-            this.Controls.Add(this.trackGenTestBtn);
+            this.Controls.Add(this.startTimeCheck);
+            this.Controls.Add(this.forceNightCheck);
+            this.Controls.Add(this.forceRainCheck);
             this.Controls.Add(this.trackConfigureBtn);
             this.Controls.Add(this.raceLengthCheck);
             this.Controls.Add(this.raceTypeBox);
@@ -765,7 +792,9 @@ namespace GT7_Randomizer
         private System.Windows.Forms.TextBox raceTypeBox;
         private System.Windows.Forms.CheckBox raceLengthCheck;
         private System.Windows.Forms.Button trackConfigureBtn;
-        private System.Windows.Forms.Button trackGenTestBtn;
+        private System.Windows.Forms.CheckBox forceRainCheck;
+        private System.Windows.Forms.CheckBox forceNightCheck;
+        private System.Windows.Forms.CheckBox startTimeCheck;
     }
 }
 
