@@ -71,6 +71,12 @@ namespace GT7_Randomizer
 
       
 
+        //*****NOTE***** - be sure to program this in such a way
+        //that if you hard code the no repeats value, or even if you don't
+        //if they try to pass in some list that is shorter than the no repeats
+        //setting, it doesn't infinite loop or blow up
+
+
         //Initialize global lists to be used in functions
         List<int> gr3Repeats = new List<int>();
         List<int> gr4Repeats = new List<int>();
@@ -81,12 +87,18 @@ namespace GT7_Randomizer
         
         int counter = 1;
 
-        //testing this for form 2
+        //creating track list to pass into the track form, as well as an instance of the track form
         List<ListViewItem> trackList = new List<ListViewItem>();
         TrackForm tf = new TrackForm();
 
         public List<track> trackListNew { get; set; }
         List<track> baseTrackList = new List<track>();
+
+        //note, may need to do the new and base list like above
+        //but trying just one list for this
+        List<ListViewItem> gr3FormList = new List<ListViewItem>();
+        gr3Form g3f = new gr3Form();
+        List<car> gr3List = new List<car>();
         
         //a class for drivers to use for the listview
         class driver
@@ -193,6 +205,28 @@ namespace GT7_Randomizer
             }
         }
 
+        public class car
+        {
+
+            public string name { get; set; }
+
+            public string drivetrain { get; set; }
+
+            public int hp { get; set; }
+
+            public int weight { get; set; }
+
+            public car(string nm, string dt)
+            {
+
+                this.name = nm;
+                this.drivetrain = dt;
+
+            }
+
+
+        }
+
         public Form1()
         {
             
@@ -201,6 +235,7 @@ namespace GT7_Randomizer
             //event listener that listens for when the track form is closed. When it is, we pull the track list
             //from the track configuration form, so that we use the updated list with our calculations
             tf.Closed += (sender, args) => this.trackListNew = tf.getTrackList();
+            g3f.Closed += (sender, args) => this.gr3List = g3f.getCarList();
         }   
 
         public void Form1_Load(object sender, EventArgs e)
@@ -210,6 +245,9 @@ namespace GT7_Randomizer
             //Actually, I'm sure there's a better way, but #babyprogrammer
             loadTrackConfigure();
 
+            //on program load, this loads the data into the Gr3 configure form. Same #babyprogrammer
+            //excuse for this also
+            loadGr3Configure();
               
         }
 
@@ -761,8 +799,6 @@ namespace GT7_Randomizer
                     track test = new track(col[0], rainStr, nightStr, jaggedWeatherList[rainInt].ToList(), jaggedTimeOfDay[nightInt].ToList());
                     baseTrackList.Add(test);
               
-                   
-
 
                 //like in the AddDriver method in Form1, we're going to use an array
                 //(in this case, the split line from the text file) to insert data into the listview
@@ -784,9 +820,6 @@ namespace GT7_Randomizer
                 item.Checked = true;
                 trackList.Add(item);
 
-
-
-
             }
 
 
@@ -798,9 +831,40 @@ namespace GT7_Randomizer
             //set array of listview items in the tf object
             tf.lv = trackList;
 
-            //form 2 takes those items and puts them in the listview
+        }
 
-            //items that are unchecked there, stay unchecked, theoretically.
+        //function to load the group 3 list into the form when the application is first launched
+
+        private void loadGr3Configure()
+        {
+
+            //for each line in the group 3 list, add it to the base list
+
+            foreach (string line in System.IO.File.ReadLines("Data/Gr3List.txt")) {
+
+
+                //as of 7/14/22, there are only 2 things in the gr3 list, name and drivetrain
+                //in time, I may add more to these, specifically power, weight, and perhaps
+                //performance points, but for now, it's:
+                //col[0] - name
+                //col[1] - drivetrain
+
+                string[] col = line.Split(',');
+
+                //create a new car using the data, and add it to the list
+
+                car car = new car(col[0], col[1]);
+                gr3List.Add(car);
+
+                ListViewItem item;
+
+                item = new ListViewItem(col);
+                item.Checked = true;
+                gr3FormList.Add(item);
+
+            }
+
+            g3f.lv = gr3FormList;
 
         }
 
@@ -865,6 +929,10 @@ namespace GT7_Randomizer
             
         }
 
-       
+        private void gr3ConfigureBtn_Click(object sender, EventArgs e)
+        {
+            g3f.setCarList(gr3List);
+            g3f.ShowDialog();
+        }
     }
 }

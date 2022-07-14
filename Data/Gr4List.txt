@@ -1,3 +1,32 @@
-﻿AMG
-Bugatti
-Suzuki
+﻿Alfa Romeo 155 2.5 V6 TI '93, AWD
+Alfa Romeo 4C Gr.4, MR
+AMG SLS Gr.4, FR
+Aston Martin Vantage Gr.4, FR
+Audi TT Cup '16, FF
+BMW M4 Gr.4, FR
+Bugatti Veyron Gr.4, AWD
+Chevrolet Corvette C7 Gr.4, FR
+Citroen GT by Citroen Gr.4, MR
+Dodge Viper Gr.4, FR
+Ferrari 458 Italia Gr.4, MR
+Ford Mustang Gr.4, FR
+Genesis G70 GR4, FR
+Honda NSX Gr.4, MR
+Hyundai Genesis Gr.4, FR
+Jaguar F-Type Gr.4, FR
+Lamborghini Huracan Gr.4, AWD
+Lexus RC F Gr.4, FR
+Mazda Atenza Gr.4, AWD
+McLaren 650S Gr.4, MR
+Mitsubish Lancer Evolution Final Edition Gr.4, AWD
+Nissan GT-R Gr.4, AWD
+Nissan Silvia spec-R AERO (S15) Touring Car, FR
+Peugeot RCZ Gr.4, FF
+Porsche Cayman GT4 Clubsport '16, MR
+Renault Sport Megane Gr.4, FF
+Renault Sport Megane Trophy '11, MR
+Subaru WRX Gr.4, AWD
+Suzuki Swift Sport '17, FF
+Toyota 86 Gr.4, FR
+Toyota GR Supra Race Car, FR
+Volkswagen Scirocco Gr.4, FF

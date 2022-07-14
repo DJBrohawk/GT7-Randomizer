@@ -91,6 +91,7 @@ namespace GT7_Randomizer
             this.forceRainCheck = new System.Windows.Forms.CheckBox();
             this.forceNightCheck = new System.Windows.Forms.CheckBox();
             this.startTimeCheck = new System.Windows.Forms.CheckBox();
+            this.gr3ConfigureBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.maxLapBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fuelMultiplierBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tireMultiplierBox)).BeginInit();
@@ -658,11 +659,22 @@ namespace GT7_Randomizer
             this.startTimeCheck.Text = "Start Time";
             this.startTimeCheck.UseVisualStyleBackColor = true;
             // 
+            // gr3ConfigureBtn
+            // 
+            this.gr3ConfigureBtn.Location = new System.Drawing.Point(469, 425);
+            this.gr3ConfigureBtn.Name = "gr3ConfigureBtn";
+            this.gr3ConfigureBtn.Size = new System.Drawing.Size(112, 34);
+            this.gr3ConfigureBtn.TabIndex = 66;
+            this.gr3ConfigureBtn.Text = "Gr3 Config";
+            this.gr3ConfigureBtn.UseVisualStyleBackColor = true;
+            this.gr3ConfigureBtn.Click += new System.EventHandler(this.gr3ConfigureBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1243, 589);
+            this.Controls.Add(this.gr3ConfigureBtn);
             this.Controls.Add(this.startTimeCheck);
             this.Controls.Add(this.forceNightCheck);
             this.Controls.Add(this.forceRainCheck);
@@ -795,6 +807,7 @@ namespace GT7_Randomizer
         private System.Windows.Forms.CheckBox forceRainCheck;
         private System.Windows.Forms.CheckBox forceNightCheck;
         private System.Windows.Forms.CheckBox startTimeCheck;
+        private System.Windows.Forms.Button gr3ConfigureBtn;
     }
 }
 

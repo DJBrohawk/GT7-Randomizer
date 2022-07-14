@@ -1,6 +1,46 @@
-﻿Audi
-Porsche
-Mazda
-Suzuki
-Ford
-Chevrolet
+﻿Alfa Romeo 4C Gr.3, MR
+AMG GT3 '16, FR
+AMG SLS GT3 '11, FR
+Aston Martin DBR9 GT1 '10, FR
+Aston Martin V12 Vantage GT3 '12, FR
+Audi R8 LMS '15, MR
+Audi R8 LMS Evo '19, MR
+BMW M3 GT (BMW Motorsport) '11, FR
+BMW M6 Endurance Model '16, FR
+BMW M6 Sprint Model '16, FR
+BMW Z4 GT3 '11, FR
+Chevrolet Corvette C7 Gr.3, FR
+Citroen GT by Citroen Race Car Gr.3, MR
+Dodge Viper SRT GT3-R '15, FR
+Ferrari 458 Italia GT3 '13, MR
+Ford GT LM Race Car Spec II, MR
+Ford GT LM Spec II Test Car, MR
+Ford GT Race Car '18, MR
+Ford Mustang Gr.3, FR
+Genesis X GR3, FR
+Honda NSX Gr.3, MR
+Hyundai Genesis Gr.3, FR
+Jaguar F-Type Gr.3, FR
+Lamborghini Huracan GT3 '15, MR
+Lexus RC F GT3 (Emil Frey Racing) '17, FR
+Lexus RC F Prototype (Emil Frey Racing) '16, FR
+Mazda Atenza Gr.3, FR
+Mazda RX-Vision GT3 Concept, FR
+Mazda RX-Vision GT3 Concept Stealth Model, FR
+McLaren 650S GT3 '15, MR
+McLaren F1 GTR - BMW (Kokusai Kaihatsu UK Racing) '95, MR
+Mitsubishi Lancer Evolution Final Edition Gr.3, FR
+Nissan GT-R GT500 '99, FR
+Nissan GT-R NISMO GT3 N24 Schulze Motorsport '13, FR
+Peugeot VGT Gr.3, MR
+Peugeot RCZ Gr.3, MR
+Porsche 911 RSR (991) '16, MR
+Renault R.S.01 GT3 '16, MR
+Subaru BRZ GT300 '21, FR
+Subaru WRX Gr.3, FR
+Suzuki VGT (Gr.3 Version), FR
+Toyota FT-1 VGT Gr.3, FR
+Toyota GR Supra Racing Concept '18, FR
+Toyota Supra GT500 '97, FR
+Volkswagen Beetle Gr.3, FR
+Volkswagen GTI VGT Gr.3, MR
