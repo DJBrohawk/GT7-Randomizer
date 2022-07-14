@@ -32,7 +32,7 @@ namespace GT7_Randomizer
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.gr3Btn = new System.Windows.Forms.Button();
             this.gr4Btn = new System.Windows.Forms.Button();
-            this.randomCar = new System.Windows.Forms.TextBox();
+            this.randomCarBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.driverNameBox = new System.Windows.Forms.TextBox();
@@ -117,12 +117,12 @@ namespace GT7_Randomizer
             this.gr4Btn.UseVisualStyleBackColor = true;
             this.gr4Btn.Click += new System.EventHandler(this.gr4Btn_Click);
             // 
-            // randomCar
+            // randomCarBox
             // 
-            this.randomCar.Location = new System.Drawing.Point(129, 496);
-            this.randomCar.Name = "randomCar";
-            this.randomCar.Size = new System.Drawing.Size(570, 31);
-            this.randomCar.TabIndex = 2;
+            this.randomCarBox.Location = new System.Drawing.Point(129, 496);
+            this.randomCarBox.Name = "randomCarBox";
+            this.randomCarBox.Size = new System.Drawing.Size(570, 31);
+            this.randomCarBox.TabIndex = 2;
             // 
             // label1
             // 
@@ -618,11 +618,11 @@ namespace GT7_Randomizer
             // 
             // trackConfigureBtn
             // 
-            this.trackConfigureBtn.Location = new System.Drawing.Point(310, 428);
+            this.trackConfigureBtn.Location = new System.Drawing.Point(302, 428);
             this.trackConfigureBtn.Name = "trackConfigureBtn";
-            this.trackConfigureBtn.Size = new System.Drawing.Size(112, 34);
+            this.trackConfigureBtn.Size = new System.Drawing.Size(120, 34);
             this.trackConfigureBtn.TabIndex = 61;
-            this.trackConfigureBtn.Text = "Form 2";
+            this.trackConfigureBtn.Text = "Track Config";
             this.trackConfigureBtn.UseVisualStyleBackColor = true;
             this.trackConfigureBtn.Click += new System.EventHandler(this.trackConfigureBtn_Click);
             // 
@@ -730,7 +730,7 @@ namespace GT7_Randomizer
             this.Controls.Add(this.driverNameBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.randomCar);
+            this.Controls.Add(this.randomCarBox);
             this.Controls.Add(this.gr4Btn);
             this.Controls.Add(this.gr3Btn);
             this.Name = "Form1";
@@ -748,7 +748,7 @@ namespace GT7_Randomizer
 
         private System.Windows.Forms.Button gr3Btn;
         private System.Windows.Forms.Button gr4Btn;
-        private System.Windows.Forms.TextBox randomCar;
+        private System.Windows.Forms.TextBox randomCarBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox driverNameBox;
