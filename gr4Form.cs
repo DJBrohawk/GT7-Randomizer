@@ -27,8 +27,6 @@ namespace GT7_Randomizer
         }
         public List<Form1.car> getCarList() { return form1Cars; }
 
-
-
         public gr4Form()
         {
             InitializeComponent();
