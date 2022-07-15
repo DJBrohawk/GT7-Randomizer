@@ -69,7 +69,11 @@ namespace GT7_Randomizer
                             "R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08"}
         };
 
-      
+        //hard coded array for all the tire choices
+
+        public string[] tireList = new string[] {"Comfort Hard", "Comfort Medium",
+        "Comfort Soft", "Sports Hard", "Sports Medium", "Sports Soft", "Racing Hard",
+        "Racing Medium", "Racing Soft", "Intermediate", "Heavy Wet"};
 
         //*****NOTE***** - be sure to program this in such a way
         //that if you hard code the no repeats value, or even if you don't
@@ -79,7 +83,7 @@ namespace GT7_Randomizer
 
         //Initialize global lists to be used in functions
         List<car> gr3Repeats = new List<car>();
-        List<int> gr4Repeats = new List<int>();
+        List<car> gr4Repeats = new List<car>();
         List<int> customRepeats = new List<int>();
         List<string> trackRepeats = new List<string>();
         //List<int> categoryRepeats = new List<int>(); //in here in the event I want to do no repeats for categories
@@ -99,6 +103,11 @@ namespace GT7_Randomizer
         List<ListViewItem> gr3FormList = new List<ListViewItem>();
         gr3Form g3f = new gr3Form();
         List<car> gr3List = new List<car>();
+
+        //the Group 4 version of the above Group 3 setup
+        List<ListViewItem> gr4FormList = new List<ListViewItem>();
+        gr4Form g4f = new gr4Form();
+        List<car> gr4List = new List<car>();
         
         //a class for drivers to use for the listview
         class driver
@@ -236,6 +245,7 @@ namespace GT7_Randomizer
             //from the track configuration form, so that we use the updated list with our calculations
             tf.Closed += (sender, args) => this.trackListNew = tf.getTrackList();
             g3f.Closed += (sender, args) => this.gr3List = g3f.getCarList();
+            g4f.Closed += (sender, args) => this.gr3List = g4f.getCarList();
         }   
 
         public void Form1_Load(object sender, EventArgs e)
@@ -245,9 +255,10 @@ namespace GT7_Randomizer
             //Actually, I'm sure there's a better way, but #babyprogrammer
             loadTrackConfigure();
 
-            //on program load, this loads the data into the Gr3 configure form. Same #babyprogrammer
+            //on program load, this loads the data into the Gr3/Gr4 configure forms. Same #babyprogrammer
             //excuse for this also
             loadGr3Configure();
+            loadGr4Configure();
               
         }
 
@@ -305,16 +316,30 @@ namespace GT7_Randomizer
             return "error choosing car.";    
         }
 
-        //generates a car using Gr4List.djb
+        //generates a car using the list provided by the Gr4 Config form
         private string gr4Generate() {
 
-            List<String> gr4List = new List<String>();
+            //establish a bool variable and a new random object to be used
             Random rnd = new Random();
             Boolean repeat = true;
 
-            foreach (string line in System.IO.File.ReadLines(@"c:\temp\Gr4List.djb"))
+            //first, we'll check to see if there's been some wonky configurations
+            //it is possible there could be a scenario where there are fewer cars
+            //than there are slots to repeat. If this is the case, we're bypassing
+            //the no repeats functionality to avoid infinite loops
+
+            //if I change the no repeats size down the line, I need to make sure
+            //to change this as well
+
+            if (gr4List.Count <= 5)
             {
-                gr4List.Add(line);
+                MessageBox.Show("Warning: You have a list of Group 4 cars that is less than " +
+                    "the minimum required for no repeats. If this was an accident, please make sure to choose 5 or more " +
+                    "cars the next time you create a list of Group 4 cars to randomize.\n\n" +
+                    "A random car from your list will now be chosen but may be a repeat if this list is used " +
+                    "more than once.");
+                int car = rnd.Next(gr4List.Count);
+                return gr4List[car].name;
             }
 
 
@@ -324,6 +349,7 @@ namespace GT7_Randomizer
             if (gr4Repeats.Count >= 5)
             {
                 gr4Repeats.RemoveAt(0);
+
             }
 
             do
@@ -331,11 +357,12 @@ namespace GT7_Randomizer
 
                 int car = rnd.Next(gr4List.Count);
 
-                if (!gr4Repeats.Contains(car))
+                if (!gr4Repeats.Contains(gr4List[car]))
                 {
-                    gr4Repeats.Add(car);
+                    gr4Repeats.Add(gr4List[car]);
                     repeat = false;
-                    return gr4List[car];
+                    return gr4List[car].name;
+
                 }
 
             } while (repeat == true);
@@ -536,13 +563,29 @@ namespace GT7_Randomizer
                 bopBox.Text = "N/A";
             }
 
+            //time multiplier randomization if the box is checked, from 0-30
+
             if (timeMultiplierCheck.Checked)
             {
-                int time = rnd.Next(30) + 1;
+                int time = rnd.Next(31);
                 timeMultiplierBox.Text = time.ToString();
             } else
             {
                 timeMultiplierBox.Text = "N/A";
+            }
+
+            //if the tire type box is checked, will randomize which tire is chose
+            //note this has no bearing on weather or track, or if the car can put the
+            //tires on
+
+            if (tireTypeCheck.Checked)
+            {
+                int tire = rnd.Next(tireList.Length);
+                tireTypeBox.Text = tireList[tire];
+
+            } else
+            {
+                tireTypeBox.Text = "N/A";
             }
 
             return "error choosing track";
@@ -553,7 +596,6 @@ namespace GT7_Randomizer
         //"wins the random pick lottery" - had to do it this way b/c of the no repeats rule
         private void timeOfDayText(track track)
         {
-
             if (startTimeCheck.Checked)
             {
 
@@ -569,9 +611,7 @@ namespace GT7_Randomizer
             }
             else
             {
-
                 startTimeBox.Text = "N/A";
-
             }
         }
 
@@ -592,7 +632,6 @@ namespace GT7_Randomizer
                 {
                     weatherBox.Text = track.getWeather();
                 }
-
             }
             else
             {
@@ -622,16 +661,14 @@ namespace GT7_Randomizer
             }
 
             counter = driverList.Items.Count + 1;
-
             driverList.Refresh();
-            
-
+          
         }
 
         //add individual drivers
         private void addDriver()
         {
-
+            //a check to make sure some goofball isn't trying to add a blank driver
             if (driverNameBox.Text.Trim() == "")
             {
 
@@ -640,13 +677,17 @@ namespace GT7_Randomizer
 
             }
 
+            //the below is all kind of standard addition to a listview
+            //we create a driver object for the driver and then an array
+            //to very simply add the driver to the listview. There's probably
+            //better ways but this works and it's not super bloated
             driver newDriver = new driver();
             string[] arr = new string[3];
             ListViewItem item;
 
             newDriver.number = counter;
             newDriver.name = driverNameBox.Text;
-            drivers.Add(newDriver);
+            
 
             arr[0] = newDriver.number.ToString();
             arr[1] = newDriver.name;
@@ -688,7 +729,6 @@ namespace GT7_Randomizer
             }
             else
             {
-
                 MessageBox.Show("There was a problem using the custom list. Please select a .txt file containing a list of cars.");
                 return;
             }          
@@ -709,10 +749,17 @@ namespace GT7_Randomizer
                 return;
             }
 
-            foreach(var item in drivers)
+            foreach(ListViewItem item in driverList.Items)
             {
                 string randCar = gr3Generate();
-                driverList.Items[count].SubItems[2].Text = randCar;
+                try
+                {
+                    driverList.Items[count].SubItems[2].Text = randCar;
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(count + " SHULK SCREAM AHHHHHHehhhhuhhh");
+                    
+                }
                 count++;
             }
         }
@@ -727,7 +774,7 @@ namespace GT7_Randomizer
                 return;
             }
 
-            foreach (var item in drivers)
+            foreach (ListViewItem item in driverList.Items)
             {
                 string randCar = gr4Generate();
                 driverList.Items[count].SubItems[2].Text = randCar;
@@ -756,7 +803,7 @@ namespace GT7_Randomizer
             {
                 string sFileName = customListFD.FileName;
 
-                foreach (var item in drivers)
+                foreach (ListViewItem item in driverList.Items)
                 {
                     string randCar = customGenerate(sFileName);
                     driverList.Items[count].SubItems[2].Text = randCar;
@@ -890,6 +937,40 @@ namespace GT7_Randomizer
 
         }
 
+        //function to load the group 4 list into the form when the application is first launched
+        private void loadGr4Configure()
+        {
+
+            //for each line in the group 3 list, add it to the base list
+
+            foreach (string line in System.IO.File.ReadLines("Data/Gr4List.djb"))
+            {
+
+                //as of 7/15/22, there are only 2 things in the gr4 list, name and drivetrain
+                //in time, I may add more to these, specifically power, weight, and perhaps
+                //performance points, but for now, it's:
+                //col[0] - name
+                //col[1] - drivetrain
+
+                string[] col = line.Split(',');
+
+                //create a new car using the data, and add it to the list
+
+                car car = new car(col[0], col[1]);
+                gr4List.Add(car);
+
+                ListViewItem item;
+
+                item = new ListViewItem(col);
+                item.Checked = true;
+                gr4FormList.Add(item);
+
+            }
+
+            g4f.lv = gr4FormList;
+
+        }
+
         //function to set the track list from another form
         public void setTrackList(List<track> trkList)
         {
@@ -955,6 +1036,13 @@ namespace GT7_Randomizer
             //sets the car list in the Group 3 car form, then opens the form
             g3f.setCarList(gr3List);
             g3f.ShowDialog();
+        }
+
+        private void gr4ConfigureBtn_Click(object sender, EventArgs e)
+        {
+            //sets the car list in the Group 4 car form, then opens the form
+            g4f.setCarList(gr4List);
+            g4f.ShowDialog();
         }
     }
 }

@@ -10,6 +10,7 @@ This app is still very much in progress, so if you stumble upon it on GitHub, av
 1) About (toc)
 2) Generating a Random Track (trk)
 3) Config Forms (cfg)
+4) Adding New Cars/Tracks/ETC (new)
 
 With this app, you'll be able to do a number of things:
 
@@ -47,9 +48,9 @@ Below are explanations of all the options you can use in the main module:
 
 8) Laps/Mins - Randomizes the amount of laps/minutes from 1 to the number on the "Max # of Laps/Mins" value counter, default is 10.
 
-9) Force Rain - This forces the randomizer to choose one of the rain weather options if the track has rain available on it. If no rain is available, it just chooses one of the other weather options.
+9) Force Rain - This forces the randomizer to choose one of the rain weather options if the track has rain available on it. If no rain is available, it just chooses one of the other weather options. I coupled this with the "Rain Only" button in the track config so that you could force a random rain race through the track config list if you wanted.
 
-10) Force Night - This forces the randomizer to choose the latest available time on a track. Not every track supports night, so this may be something like "Evening". Best I could do, sorry ;(
+10) Force Night - This forces the randomizer to choose the latest available time on a track if that is "Night" or "Midnight". If the track doesn't have either of those, it will just pick a random time. I coupled this with the track config button "Night Only" so you could essentially guarantee a night race in your track config list as opposed to forcing the randomizer to work harder to find a track with night in it. Best I could do, sorry ;(
 
 11) Start Time - Randomizes the start time from the available choices on a track. This will not pick something that a track does not offer (unless my code is broken, then who knows what could happen!)
 
@@ -71,15 +72,9 @@ Each time you reload the config form, the list will be "remembered" by the app. 
 
 To generate a random car for everyone in your race, you'll have to add drivers individually using the "Add Driver" button. Once you've added everyone in your race, click one of the Generate Race buttons to assign a random car to everyone in the list.
 
----ADDING CARS/TRACKS/ETC---
+---ADDING NEW CARS/TRACKS/ETC---(new)
 
-To add a car to the pool of cars or tracks to be chosen, open any of "Gr3List.txt", "Gr4List.txt", "CustomList.txt", "CategoryList.txt", or "TrackList.txt" in the root directory of the application, and then modify the file as you wish. Be sure to only put one name per line. For example:
-
-Audi R8
-Lamborghini Aventador
-Ferrari 458
-
-Feel free to add or delete whatever you'd like from the files. I have included separately named base text files for Group 3, Group 4, and the tracks that you can copy/paste from if you want to start fresh.
+I will do my best to add new tracks/layouts and cars as they get added to the game and put them in a new release. (This mostly comes down to whether or not I remember to do it) - 
 
 ---DELETING DRIVERS FROM THE DRIVER LIST---
 
@@ -87,19 +82,19 @@ The list on the right has the ability to delete multiple drivers or clear the wh
 
 ---OTHER THOUGHTS---
 
-I did not include any of the dirt tracks in my Track List due to that potentially being a mess, although you can always add them to the track list yourself and add dirt-worthy cars to a custom list ;)
+I did not include any of the dirt tracks in my Track List due to that potentially being a mess. It wouldn't be a huge pain to add them, but you start running the risk of creating impossible races since a lot of race cars don't support dirt tires and dirt races are nearly impossible without them (remember that one tire glitch?)
 
-This app was inspired by ideas tossed around between myself and some the friends I've made through several GT content creators' communities, most notably EERIEISSS and Tidgney. If you haven't checked them out, please do so. Both great fellows!
+This app was inspired by ideas tossed around between myself and some of the friends I've made through several GT content creators' communities, most notably EERIEISSSS and Tidgney. If you haven't checked them out, please do so. Both great fellows!
 
 Have fun! :)
 
----FUTURE IMPROVEMENTS IN VERSION 2---
+---FUTURE IMPROVEMENTS IN VERSION 3---
 
 I have some improvement ideas in mind
 
-1) Making this app not reliant on text files but rather use forms with lists and checkboxes to allow the user to include or exclude cars/tracks without manipulating text files. This method will allow for more accurate randomizing of weather and time of day related to the tracks themselves, since not all tracks support rain/night time racing.
+1) Adding the ability to let the user determine how many cars/track choices there are before a repeat can occur. This would be super easy to do, I just don't know if I want to add it or not.
 
-2) Adding the ability to let the user determine how many cars/track choices there are before a repeat can occur.
+2) When a random category is chosen, a list containing all the cars that fit into that category (stock, tuned is a whole other problem) appear somewhere
 
-
+3) Maybe add dirt tracks in some capacity if enough people want it
 
