@@ -1,7 +1,7 @@
 ﻿READ ME
 Version 2.0
 
-Hello! Welcome to DJ Brohawk's GT7 randomizer app, Version 2!. Firstly, since this readme is quite long, if there are any comments, questions, or concerns, I can be found on Twitter @DJBrohawk! :)
+Hello! Welcome to DJ Brohawk's GT7 randomizer app, Version 2!. Firstly, since this readme is quite long (TL;DR section included), if there are any comments, questions, or concerns, I can be found on Twitter @DJBrohawk! :)
 
 This app is still very much in progress, so if you stumble upon it on GitHub, avert your eyes! Just kidding.
 
@@ -10,7 +10,12 @@ This app is still very much in progress, so if you stumble upon it on GitHub, av
 1) About (toc)
 2) Generating a Random Track (trk)
 3) Config Forms (cfg)
-4) Adding New Cars/Tracks/ETC (new)
+4) Generating a Random Car For Your Whole Race (gen)
+5) Adding New Cars/Tracks/ETC (new)
+6) Deleting Drivers From The List (del)
+7) Other Thoughts (oth)
+8) TL;DR (tldr)
+9) Future Improvement Ideas (fut)
 
 With this app, you'll be able to do a number of things:
 
@@ -68,27 +73,41 @@ You shouldn't be able to save the list with nothing checked, it should yell at y
 
 Each time you reload the config form, the list will be "remembered" by the app. If you close out the app entirely, the list won't be remembered and you'll have to redo it the next time you launch it.
 
----GENERATING A RANDOM CAR FOR EVERYONE---
+---GENERATING A RANDOM CAR FOR YOUR WHOLE RACE---(gen)
 
-To generate a random car for everyone in your race, you'll have to add drivers individually using the "Add Driver" button. Once you've added everyone in your race, click one of the Generate Race buttons to assign a random car to everyone in the list.
+To generate a random car for everyone in your race, you'll have to add drivers individually using the "Add Driver" button, or pressing the Enter key in the driver name field. Once you've added everyone in your race, click one of the Generate Race buttons to assign a random car to everyone in the list.
+
+You can generate as many rolls of the random cars as you want, but you have to do it for everyone at the same time. If you, or someone else, wants a different car, either re-roll the race and give them the one chosen for them, or pick an individual car using the individual car randomizer. It pulls from the same config list as the race generator!
 
 ---ADDING NEW CARS/TRACKS/ETC---(new)
 
-I will do my best to add new tracks/layouts and cars as they get added to the game and put them in a new release. (This mostly comes down to whether or not I remember to do it) - 
+I will do my best to add new tracks/layouts and cars as they get added to the game and put them in a new release. (This mostly comes down to whether or not I remember to do it).
 
----DELETING DRIVERS FROM THE DRIVER LIST---
+There is a way for users to update the list manually, however I can't guarantee what'll happen if something is put in there incorrectly, so I would advise against it. If I do it, I know it's put in there correctly and there won't be any problems, if that makes sense.
+
+---DELETING DRIVERS FROM THE DRIVER LIST---(del)
 
 The list on the right has the ability to delete multiple drivers or clear the whole list. To delete a single or multiple drivers, simply left click (or hold down shift or control while left clicking to select multiple) and then click the "Delete Driver" button. This will delete the drivers and adjust the remaining drivers in the list automatically. You can delete the whole list by clicking the "Delete All" button.
 
----OTHER THOUGHTS---
+---OTHER THOUGHTS---(oth)
 
 I did not include any of the dirt tracks in my Track List due to that potentially being a mess. It wouldn't be a huge pain to add them, but you start running the risk of creating impossible races since a lot of race cars don't support dirt tires and dirt races are nearly impossible without them (remember that one tire glitch?)
 
-This app was inspired by ideas tossed around between myself and some of the friends I've made through several GT content creators' communities, most notably EERIEISSSS and Tidgney. If you haven't checked them out, please do so. Both great fellows!
+This app was inspired by ideas tossed around between myself and some of the friends I've made through several GT content creators' communities, most notably EERIEISSSS and Tidgney. If you haven't checked them out, please do so. Both are great fellows!
 
 Have fun! :)
 
----FUTURE IMPROVEMENTS IN VERSION 3---
+---TL;DR---
+
+1) Generate a track - click the randomization options you want on the right, click "Generate Track".
+
+2) Generate a car - click which category of car you want to pick from, Gr.3, Gr.4, or Custom
+
+3) Config which cars/tracks/categories are picked from - click the related Config button, check the boxes of the ones you want the app to pick from, click "Save".
+
+4) Pick a random car for everyone - add drivers to the list on the right, click the category of car you want to give to everyone. Drivers can be deleted individually or in bulk by selecting them from the list.
+
+---FUTURE IMPROVEMENTS IN VERSION 3---(fut)
 
 I have some improvement ideas in mind
 

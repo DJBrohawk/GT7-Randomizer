@@ -152,6 +152,7 @@ namespace GT7_Randomizer
             this.Controls.Add(this.categoryListView);
             this.Name = "categoryForm";
             this.Text = "Category Config";
+            this.Load += new System.EventHandler(this.categoryForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

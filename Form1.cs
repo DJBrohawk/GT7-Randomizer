@@ -108,6 +108,11 @@ namespace GT7_Randomizer
         List<ListViewItem> gr4FormList = new List<ListViewItem>();
         gr4Form g4f = new gr4Form();
         List<car> gr4List = new List<car>();
+
+        //the category version of the above
+        List<ListViewItem> categoryFormList = new List<ListViewItem>();
+        categoryForm cf = new categoryForm();
+        List<category> categoryList = new List<category>();
         
         //a class for drivers to use for the listview
         class driver
@@ -236,6 +241,38 @@ namespace GT7_Randomizer
 
         }
 
+        public class category
+        {
+
+            public string name { get; set; }
+
+            public string description { get; set; }
+
+            public string standard { get; set; }
+
+            public category (string nm)
+            {
+                this.name = nm;
+            }
+
+            public category (string nm, string desc)
+            {
+
+                this.name = nm;
+                this.description = desc;
+
+            }
+
+            public category (string nm, string desc, string std)
+            {
+                this.name = nm;
+                this.description = desc;
+                this.standard = std;
+            }
+
+
+        }
+
         public Form1()
         {
             
@@ -255,10 +292,11 @@ namespace GT7_Randomizer
             //Actually, I'm sure there's a better way, but #babyprogrammer
             loadTrackConfigure();
 
-            //on program load, this loads the data into the Gr3/Gr4 configure forms. Same #babyprogrammer
+            //on program load, this loads the data into the Gr3/Gr4/Category configure forms. Same #babyprogrammer
             //excuse for this also
             loadGr3Configure();
             loadGr4Configure();
+            loadCategoryConfigure();
               
         }
 
@@ -968,6 +1006,83 @@ namespace GT7_Randomizer
             }
 
             g4f.lv = gr4FormList;
+
+        }
+
+        private void loadCategoryConfigure()
+        {
+            //the first foreach is to load the base category list form into the listview first
+            foreach (string line in System.IO.File.ReadLines("Data/CategoryList.djb"))
+            {
+
+
+                //as of 7/15/22, there are only 3 things in the category list, name, description, and if it's standard/nonstandard/custom
+                //in time, I may add more to these, but for now, it's:
+                //col[0] - name
+                //col[1] - description
+                //col[2] - standard, nonstandard, custom
+
+                string[] col = line.Split(',');
+
+                //create a new car using the data, and add it to the list
+
+                category category = new category(col[0], col[1], col[2]);
+                categoryList.Add(category);
+
+                ListViewItem item;
+
+                item = new ListViewItem(col);
+                item.Checked = true;
+                categoryFormList.Add(item);
+
+            }
+
+            //this opens the program up to user shenanigans with the custom category list
+            //so we're going to do some checks to try and prevent null data in lines from being
+            //passed into the app
+
+            //there should be two fields in CustomCategoryList.txt
+            //col[0] - name
+            //col[1] - description
+
+            //the below count variables are for error messaging to the user
+            int count = 1;
+            int count2 = 1;
+
+            foreach(string line in System.IO.File.ReadLines("Data/CustomCategoryList.txt")) {
+
+                string[] col = line.Split(',');
+
+                if (col[0] == null)
+                {
+                    MessageBox.Show("There is an error in the name of line " + count +
+                        ". Please check CustomCategoryList.txt to determine" +
+                        " what may be wrong with the data. This line will be skipped.");
+                    count++;
+                    continue;
+                }
+
+                if (col[1] == null)
+                {
+                    MessageBox.Show("There is an error in the description of line " + count2 +
+                        ". Please check CustomCategoryList.txt to determine" +
+                        " what may be wrong with the data. This line will be skipped.");
+                    count2++;
+                    continue;
+
+                }
+                count++;
+                count2++;
+
+                //since there's only two things in each line of the custom category
+                //text file, we're passing in custom automatically
+                category category = new category(col[0], col[1], "Custom");
+                ListViewItem item2;
+                item2 = new ListViewItem(col);
+                categoryFormList.Add(item2);
+            }
+
+            cf.lv = categoryFormList;
 
         }
 
