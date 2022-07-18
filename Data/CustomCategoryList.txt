@@ -4,4 +4,3 @@ All Sambabus, A race using only the Sambabus
 Reverse, Everyone must drive the race in reverse (Recommend 1 lap)
 One Gear, Everyone can only use one gear
 Borrowed Car, Everyone picks a car for someone else
-

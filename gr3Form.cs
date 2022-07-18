@@ -124,7 +124,7 @@ namespace GT7_Randomizer
             {
                 MessageBox.Show("WARNING: You have attempted to save a list of cars that " +
                                 "has no cars in it. Please select at least one car before saving " +
-                                "and closing the track configuration form.");
+                                "and closing the Gr3 configuration form.");
                 return;
             }
 

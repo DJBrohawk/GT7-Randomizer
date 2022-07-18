@@ -96,6 +96,7 @@ namespace GT7_Randomizer
             this.label19 = new System.Windows.Forms.Label();
             this.tireTypeBox = new System.Windows.Forms.TextBox();
             this.gr4ConfigureBtn = new System.Windows.Forms.Button();
+            this.categoryConfigureBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.maxLapBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fuelMultiplierBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tireMultiplierBox)).BeginInit();
@@ -710,11 +711,22 @@ namespace GT7_Randomizer
             this.gr4ConfigureBtn.UseVisualStyleBackColor = true;
             this.gr4ConfigureBtn.Click += new System.EventHandler(this.gr4ConfigureBtn_Click);
             // 
+            // categoryConfigureBtn
+            // 
+            this.categoryConfigureBtn.Location = new System.Drawing.Point(374, 425);
+            this.categoryConfigureBtn.Name = "categoryConfigureBtn";
+            this.categoryConfigureBtn.Size = new System.Drawing.Size(167, 34);
+            this.categoryConfigureBtn.TabIndex = 71;
+            this.categoryConfigureBtn.Text = "Category Config";
+            this.categoryConfigureBtn.UseVisualStyleBackColor = true;
+            this.categoryConfigureBtn.Click += new System.EventHandler(this.categoryConfigureBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1328, 589);
+            this.Controls.Add(this.categoryConfigureBtn);
             this.Controls.Add(this.gr4ConfigureBtn);
             this.Controls.Add(this.tireTypeBox);
             this.Controls.Add(this.label19);
@@ -857,6 +869,7 @@ namespace GT7_Randomizer
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox tireTypeBox;
         private System.Windows.Forms.Button gr4ConfigureBtn;
+        private System.Windows.Forms.Button categoryConfigureBtn;
     }
 }
 

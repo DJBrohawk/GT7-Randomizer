@@ -282,7 +282,8 @@ namespace GT7_Randomizer
             //from the track configuration form, so that we use the updated list with our calculations
             tf.Closed += (sender, args) => this.trackListNew = tf.getTrackList();
             g3f.Closed += (sender, args) => this.gr3List = g3f.getCarList();
-            g4f.Closed += (sender, args) => this.gr3List = g4f.getCarList();
+            g4f.Closed += (sender, args) => this.gr4List = g4f.getCarList();
+            cf.Closed += (sender, args) => this.categoryList = cf.getCategoryList();
         }   
 
         public void Form1_Load(object sender, EventArgs e)
@@ -538,15 +539,10 @@ namespace GT7_Randomizer
 
             if (categoryCheck.Checked)
             {
-                List<string> categoryList = new List<string>();
 
-                foreach (string line in System.IO.File.ReadLines("data/CategoryList.djb"))
-                {
-                    categoryList.Add(line);
-                }
+                int cat = rnd.Next(categoryList.Count);
 
-                int category = rnd.Next(categoryList.Count);
-                categoryBox.Text = categoryList[category];
+                categoryBox.Text = categoryList[cat].name;
 
             } else
             {
@@ -979,7 +975,7 @@ namespace GT7_Randomizer
         private void loadGr4Configure()
         {
 
-            //for each line in the group 3 list, add it to the base list
+            //for each line in the group 5 list, add it to the base list
 
             foreach (string line in System.IO.File.ReadLines("Data/Gr4List.djb"))
             {
@@ -1015,26 +1011,31 @@ namespace GT7_Randomizer
             foreach (string line in System.IO.File.ReadLines("Data/CategoryList.djb"))
             {
 
+                
+                    //as of 7/15/22, there are only 3 things in the category list, name, description, and if it's standard/nonstandard/custom
+                    //in time, I may add more to these, but for now, it's:
+                    //col[0] - name
+                    //col[1] - description
+                    //col[2] - standard, nonstandard, custom
 
-                //as of 7/15/22, there are only 3 things in the category list, name, description, and if it's standard/nonstandard/custom
-                //in time, I may add more to these, but for now, it's:
-                //col[0] - name
-                //col[1] - description
-                //col[2] - standard, nonstandard, custom
+                    string[] col = line.Split(',');
 
-                string[] col = line.Split(',');
+                    //create a new car using the data, and add it to the list
 
-                //create a new car using the data, and add it to the list
+                    category category = new category(col[0], col[1], col[2]);
+                    categoryList.Add(category);
 
-                category category = new category(col[0], col[1], col[2]);
-                categoryList.Add(category);
+                    ListViewItem item;
 
-                ListViewItem item;
+                    item = new ListViewItem(col);
 
-                item = new ListViewItem(col);
-                item.Checked = true;
-                categoryFormList.Add(item);
-
+                //this is so the nonstandard categories are not checked at first
+                if (item.SubItems[2].Text.Trim() == "Standard")
+                {
+                    item.Checked = true;
+                }
+                    categoryFormList.Add(item);
+                
             }
 
             //this opens the program up to user shenanigans with the custom category list
@@ -1051,35 +1052,47 @@ namespace GT7_Randomizer
 
             foreach(string line in System.IO.File.ReadLines("Data/CustomCategoryList.txt")) {
 
-                string[] col = line.Split(',');
+                    string[] col = line.Split(',');
 
-                if (col[0] == null)
-                {
-                    MessageBox.Show("There is an error in the name of line " + count +
-                        ". Please check CustomCategoryList.txt to determine" +
-                        " what may be wrong with the data. This line will be skipped.");
+                    if (col[0] == null)
+                    {
+                        MessageBox.Show("There is an error in the name of line " + count +
+                            ". Please check CustomCategoryList.txt to determine" +
+                            " what may be wrong with the data. This line will be skipped.");
+                        count++;
+                        continue;
+                    }
+
+                    if (col[1] == null)
+                    {
+                        MessageBox.Show("There is an error in the description of line " + count2 +
+                            ". Please check CustomCategoryList.txt to determine" +
+                            " what may be wrong with the data. This line will be skipped.");
+                        count2++;
+                        continue;
+
+                    }
                     count++;
-                    continue;
-                }
-
-                if (col[1] == null)
-                {
-                    MessageBox.Show("There is an error in the description of line " + count2 +
-                        ". Please check CustomCategoryList.txt to determine" +
-                        " what may be wrong with the data. This line will be skipped.");
                     count2++;
-                    continue;
 
-                }
-                count++;
-                count2++;
+                    //since there's only two things in each line of the custom category
+                    //text file, we're passing in custom automatically
+                    category category = new category(col[0], col[1], "Custom");
+                    categoryList.Add(category);
 
-                //since there's only two things in each line of the custom category
-                //text file, we're passing in custom automatically
-                category category = new category(col[0], col[1], "Custom");
-                ListViewItem item2;
-                item2 = new ListViewItem(col);
-                categoryFormList.Add(item2);
+                    //due to some shenanigans with the custom category form's split array not having custom in it
+                    //for ease of use for users, I have to make another array here to pass in the
+                    //string "custom" into the listviewitem
+                    string[] arr = new string[3];
+
+                    arr[0] = col[0];
+                    arr[1] = col[1];
+                    arr[2] = "Custom";
+
+                    ListViewItem item2;
+                    item2 = new ListViewItem(arr);
+                    categoryFormList.Add(item2);
+                
             }
 
             cf.lv = categoryFormList;
@@ -1158,6 +1171,12 @@ namespace GT7_Randomizer
             //sets the car list in the Group 4 car form, then opens the form
             g4f.setCarList(gr4List);
             g4f.ShowDialog();
+        }
+
+        private void categoryConfigureBtn_Click(object sender, EventArgs e)
+        {
+            cf.setCategoryList(categoryList);
+            cf.ShowDialog();
         }
     }
 }

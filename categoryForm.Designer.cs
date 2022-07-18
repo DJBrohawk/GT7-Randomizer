@@ -30,14 +30,14 @@ namespace GT7_Randomizer
         private void InitializeComponent()
         {
             this.categoryListView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.categoryCheckAllBtn = new System.Windows.Forms.Button();
             this.categoryUncheckAllBtn = new System.Windows.Forms.Button();
             this.categoryStandardOnlyBtn = new System.Windows.Forms.Button();
             this.categoryNonStandardOnlyBtn = new System.Windows.Forms.Button();
             this.categoryCustomOnlyBtn = new System.Windows.Forms.Button();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.label1 = new System.Windows.Forms.Label();
             this.categorySaveBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -58,51 +58,6 @@ namespace GT7_Randomizer
             this.categoryListView.UseCompatibleStateImageBehavior = false;
             this.categoryListView.View = System.Windows.Forms.View.Details;
             // 
-            // categoryCheckAllBtn
-            // 
-            this.categoryCheckAllBtn.Location = new System.Drawing.Point(12, 525);
-            this.categoryCheckAllBtn.Name = "categoryCheckAllBtn";
-            this.categoryCheckAllBtn.Size = new System.Drawing.Size(141, 34);
-            this.categoryCheckAllBtn.TabIndex = 1;
-            this.categoryCheckAllBtn.Text = "Check All";
-            this.categoryCheckAllBtn.UseVisualStyleBackColor = true;
-            // 
-            // categoryUncheckAllBtn
-            // 
-            this.categoryUncheckAllBtn.Location = new System.Drawing.Point(159, 525);
-            this.categoryUncheckAllBtn.Name = "categoryUncheckAllBtn";
-            this.categoryUncheckAllBtn.Size = new System.Drawing.Size(141, 34);
-            this.categoryUncheckAllBtn.TabIndex = 2;
-            this.categoryUncheckAllBtn.Text = "Uncheck All";
-            this.categoryUncheckAllBtn.UseVisualStyleBackColor = true;
-            // 
-            // categoryStandardOnlyBtn
-            // 
-            this.categoryStandardOnlyBtn.Location = new System.Drawing.Point(306, 525);
-            this.categoryStandardOnlyBtn.Name = "categoryStandardOnlyBtn";
-            this.categoryStandardOnlyBtn.Size = new System.Drawing.Size(141, 34);
-            this.categoryStandardOnlyBtn.TabIndex = 4;
-            this.categoryStandardOnlyBtn.Text = "Standard Only";
-            this.categoryStandardOnlyBtn.UseVisualStyleBackColor = true;
-            // 
-            // categoryNonStandardOnlyBtn
-            // 
-            this.categoryNonStandardOnlyBtn.Location = new System.Drawing.Point(453, 525);
-            this.categoryNonStandardOnlyBtn.Name = "categoryNonStandardOnlyBtn";
-            this.categoryNonStandardOnlyBtn.Size = new System.Drawing.Size(174, 34);
-            this.categoryNonStandardOnlyBtn.TabIndex = 5;
-            this.categoryNonStandardOnlyBtn.Text = "Nonstandard Only";
-            this.categoryNonStandardOnlyBtn.UseVisualStyleBackColor = true;
-            // 
-            // categoryCustomOnlyBtn
-            // 
-            this.categoryCustomOnlyBtn.Location = new System.Drawing.Point(633, 525);
-            this.categoryCustomOnlyBtn.Name = "categoryCustomOnlyBtn";
-            this.categoryCustomOnlyBtn.Size = new System.Drawing.Size(141, 34);
-            this.categoryCustomOnlyBtn.TabIndex = 6;
-            this.categoryCustomOnlyBtn.Text = "Custom Only";
-            this.categoryCustomOnlyBtn.UseVisualStyleBackColor = true;
-            // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Category";
@@ -117,6 +72,56 @@ namespace GT7_Randomizer
             // 
             this.columnHeader3.Text = "Standard";
             this.columnHeader3.Width = 100;
+            // 
+            // categoryCheckAllBtn
+            // 
+            this.categoryCheckAllBtn.Location = new System.Drawing.Point(12, 525);
+            this.categoryCheckAllBtn.Name = "categoryCheckAllBtn";
+            this.categoryCheckAllBtn.Size = new System.Drawing.Size(141, 34);
+            this.categoryCheckAllBtn.TabIndex = 1;
+            this.categoryCheckAllBtn.Text = "Check All";
+            this.categoryCheckAllBtn.UseVisualStyleBackColor = true;
+            this.categoryCheckAllBtn.Click += new System.EventHandler(this.categoryCheckAllBtn_Click);
+            // 
+            // categoryUncheckAllBtn
+            // 
+            this.categoryUncheckAllBtn.Location = new System.Drawing.Point(159, 525);
+            this.categoryUncheckAllBtn.Name = "categoryUncheckAllBtn";
+            this.categoryUncheckAllBtn.Size = new System.Drawing.Size(141, 34);
+            this.categoryUncheckAllBtn.TabIndex = 2;
+            this.categoryUncheckAllBtn.Text = "Uncheck All";
+            this.categoryUncheckAllBtn.UseVisualStyleBackColor = true;
+            this.categoryUncheckAllBtn.Click += new System.EventHandler(this.categoryUncheckAllBtn_Click);
+            // 
+            // categoryStandardOnlyBtn
+            // 
+            this.categoryStandardOnlyBtn.Location = new System.Drawing.Point(306, 525);
+            this.categoryStandardOnlyBtn.Name = "categoryStandardOnlyBtn";
+            this.categoryStandardOnlyBtn.Size = new System.Drawing.Size(141, 34);
+            this.categoryStandardOnlyBtn.TabIndex = 4;
+            this.categoryStandardOnlyBtn.Text = "Standard Only";
+            this.categoryStandardOnlyBtn.UseVisualStyleBackColor = true;
+            this.categoryStandardOnlyBtn.Click += new System.EventHandler(this.categoryStandardOnlyBtn_Click);
+            // 
+            // categoryNonStandardOnlyBtn
+            // 
+            this.categoryNonStandardOnlyBtn.Location = new System.Drawing.Point(453, 525);
+            this.categoryNonStandardOnlyBtn.Name = "categoryNonStandardOnlyBtn";
+            this.categoryNonStandardOnlyBtn.Size = new System.Drawing.Size(174, 34);
+            this.categoryNonStandardOnlyBtn.TabIndex = 5;
+            this.categoryNonStandardOnlyBtn.Text = "Nonstandard Only";
+            this.categoryNonStandardOnlyBtn.UseVisualStyleBackColor = true;
+            this.categoryNonStandardOnlyBtn.Click += new System.EventHandler(this.categoryNonStandardOnlyBtn_Click);
+            // 
+            // categoryCustomOnlyBtn
+            // 
+            this.categoryCustomOnlyBtn.Location = new System.Drawing.Point(633, 525);
+            this.categoryCustomOnlyBtn.Name = "categoryCustomOnlyBtn";
+            this.categoryCustomOnlyBtn.Size = new System.Drawing.Size(141, 34);
+            this.categoryCustomOnlyBtn.TabIndex = 6;
+            this.categoryCustomOnlyBtn.Text = "Custom Only";
+            this.categoryCustomOnlyBtn.UseVisualStyleBackColor = true;
+            this.categoryCustomOnlyBtn.Click += new System.EventHandler(this.categoryCustomOnlyBtn_Click);
             // 
             // label1
             // 
@@ -136,6 +141,7 @@ namespace GT7_Randomizer
             this.categorySaveBtn.TabIndex = 8;
             this.categorySaveBtn.Text = "Save";
             this.categorySaveBtn.UseVisualStyleBackColor = true;
+            this.categorySaveBtn.Click += new System.EventHandler(this.categorySaveBtn_Click);
             // 
             // categoryForm
             // 
