@@ -1,7 +1,7 @@
 ﻿READ ME
 Version 2.0
 
-Hello! Welcome to DJ Brohawk's GT7 randomizer app, Version 2!. Firstly, since this readme is quite long (TL;DR section included), if there are any comments, questions, or concerns, I can be found on Twitter @DJBrohawk! :)
+Hello! Welcome to DJ Brohawk's GT7 randomizer app, Version 2! (Version 1 was unceremoniously dumped during an internet outage - F's in the chat for version 1). Firstly, since this readme is quite long (TL;DR section included), if there are any comments, questions, or concerns, I can be found on Twitter @DJBrohawk! :)
 
 This app is still very much in progress, so if you stumble upon it on GitHub, avert your eyes! Just kidding.
 
@@ -19,9 +19,9 @@ This app is still very much in progress, so if you stumble upon it on GitHub, av
 
 With this app, you'll be able to do a number of things:
 
-1) Pick a random GT3 car, GT4 car, OR a car from a list of your own creation (more on that below)
+1) Pick a random GT3 car, GT4 car, OR a random car out of *every car in the game*, with the ability to limit the pool of cars the app can choose from
 
-2) Pick a random track, complete with a multitude of bonus randomization options
+2) Pick a random track, complete with a multitude of bonus randomization options, also with the ability to limit the pool of tracks
 
 3) Generate a random car for everyone in your race!
 
@@ -47,7 +47,7 @@ Below are explanations of all the options you can use in the main module:
 
 5) Race Type - Randomizes whether it will be a standard lap race or an endurance race
 
-6) Weather - Randomizes which of the starting weather options you choose. This doesn't take into account the custom weather feature.
+6) Weather - Randomizes which of the starting weather options you choose. This doesn't take into account the custom weather feature that lets you pick weather for various parts of the race. Too much of a headache, sorry
 
 7) Fuel/Tire Wear - Randomizes the fuel and tire wear together. If you don't want one or the other randomized, set the "Max # of" counter for that particular one to 0. Note that it is possible for fuel and tire wear to randomly be set to "Off" in addition to a random value within the bounds of what you set.
 
@@ -69,7 +69,7 @@ There are a number of buttons on the bottom of each module for mass selection or
 
 Currently, I don't have a way of filtering or sorting the items. That may come in a future update, or it may not. When I did some preliminary searching, it looked pretty annoying/difficult with WinForms, so it may not come to fruition, sorry!
 
-You shouldn't be able to save the list with nothing checked, it should yell at you and prevent you from continuing. I'm sure the more creative among you might find a way around it, but try not to do that! :P
+You shouldn't be able to save any list with nothing checked, it should yell at you and prevent you from continuing. I'm sure the more creative among you might find a way around it, but try not to do that! :P
 
 Each time you reload the config form, the list will be "remembered" by the app. If you close out the app entirely, the list won't be remembered and you'll have to redo it the next time you launch it.
 
@@ -79,11 +79,21 @@ To generate a random car for everyone in your race, you'll have to add drivers i
 
 You can generate as many rolls of the random cars as you want, but you have to do it for everyone at the same time. If you, or someone else, wants a different car, either re-roll the race and give them the one chosen for them, or pick an individual car using the individual car randomizer. It pulls from the same config list as the race generator!
 
+Note that some car names may be too long to fit in the window. I didn't want to make the main screen any larger so as to accommodate smaller laptop screens. The tops of the columns are draggable, so if you get a car name that is long and you can't quite tell what it is, click and drag the outside of the column to expand it and you should be able to see what the car name is.
+
 ---ADDING NEW CARS/TRACKS/ETC---(new)
 
 I will do my best to add new tracks/layouts and cars as they get added to the game and put them in a new release. (This mostly comes down to whether or not I remember to do it).
 
 There is a way for users to update the list manually, however I can't guarantee what'll happen if something is put in there incorrectly, so I would advise against it. If I do it, I know it's put in there correctly and there won't be any problems, if that makes sense.
+
+That said, you CAN add new categories to choose from, if there's a particular custom game you like playing (think Cops and Robbers, Just Cruising, etc.) and wish to add it into the rotation. To do so, go into the "Data" folder and open "CustomCategoryList.txt" and add your categories there. You'll notice I've included a few categories for reference, but in the event they're not there, you can add one category and a description of that category per line, separated by a comma. For example:
+
+Cops and Robbers, Description here
+Willys Jeeps Only, Description here
+Just Cruising, Description here
+
+Just be sure to not put any commas in your name or description because that'll screw things up (guess how genius DJ the programmer figured that out).
 
 ---DELETING DRIVERS FROM THE DRIVER LIST---(del)
 
@@ -109,11 +119,13 @@ Have fun! :)
 
 ---FUTURE IMPROVEMENTS IN VERSION 3---(fut)
 
-I have some improvement ideas in mind
-
-1) Adding the ability to let the user determine how many cars/track choices there are before a repeat can occur. This would be super easy to do, I just don't know if I want to add it or not.
+1) Adding the ability to let the user determine how many cars/track choices there are before a repeat can occur. This would be super easy to do, I just don't know if I want to add it or not. It'll require some changes in logic that, while plenty feasible, would be a moderate pain.
 
 2) When a random category is chosen, a list containing all the cars that fit into that category (stock, tuned is a whole other problem) appear somewhere
 
 3) Maybe add dirt tracks in some capacity if enough people want it
+
+4) Adding a way to do math based on a car's PP to where everyone can use a different car on a track and a "winner" can be determined based on lap times proportionate to their car's PP versus an "expected" lap time  - this assumes no foul play in a tuned car's setup for PP manipulation, and nobody likes PP manipulation. 
+
+
 

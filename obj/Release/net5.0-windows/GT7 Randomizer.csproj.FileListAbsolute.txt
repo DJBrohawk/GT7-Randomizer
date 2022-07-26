@@ -40,3 +40,4 @@ C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7_Randomizer.categoryForm.resources
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7_Randomizer.gr3Form.resources
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7_Randomizer.gr4Form.resources
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7_Randomizer.CustomForm.resources

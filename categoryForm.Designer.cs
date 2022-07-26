@@ -53,7 +53,7 @@ namespace GT7_Randomizer
             this.categoryListView.HideSelection = false;
             this.categoryListView.Location = new System.Drawing.Point(12, 12);
             this.categoryListView.Name = "categoryListView";
-            this.categoryListView.Size = new System.Drawing.Size(856, 507);
+            this.categoryListView.Size = new System.Drawing.Size(908, 507);
             this.categoryListView.TabIndex = 0;
             this.categoryListView.UseCompatibleStateImageBehavior = false;
             this.categoryListView.View = System.Windows.Forms.View.Details;
@@ -61,7 +61,7 @@ namespace GT7_Randomizer
             // columnHeader1
             // 
             this.columnHeader1.Text = "Category";
-            this.columnHeader1.Width = 150;
+            this.columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
@@ -135,7 +135,7 @@ namespace GT7_Randomizer
             // 
             // categorySaveBtn
             // 
-            this.categorySaveBtn.Location = new System.Drawing.Point(726, 578);
+            this.categorySaveBtn.Location = new System.Drawing.Point(779, 578);
             this.categorySaveBtn.Name = "categorySaveBtn";
             this.categorySaveBtn.Size = new System.Drawing.Size(141, 34);
             this.categorySaveBtn.TabIndex = 8;
@@ -147,7 +147,7 @@ namespace GT7_Randomizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 618);
+            this.ClientSize = new System.Drawing.Size(932, 618);
             this.Controls.Add(this.categorySaveBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.categoryCustomOnlyBtn);

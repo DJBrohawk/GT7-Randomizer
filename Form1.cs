@@ -84,7 +84,7 @@ namespace GT7_Randomizer
         //Initialize global lists to be used in functions
         List<car> gr3Repeats = new List<car>();
         List<car> gr4Repeats = new List<car>();
-        List<int> customRepeats = new List<int>();
+        List<car> customRepeats = new List<car>();
         List<string> trackRepeats = new List<string>();
         //List<int> categoryRepeats = new List<int>(); //in here in the event I want to do no repeats for categories
         List<driver> drivers = new List<driver>();
@@ -113,6 +113,11 @@ namespace GT7_Randomizer
         List<ListViewItem> categoryFormList = new List<ListViewItem>();
         categoryForm cf = new categoryForm();
         List<category> categoryList = new List<category>();
+
+        //the custom version of the above
+        List<ListViewItem> customFormList = new List<ListViewItem>();
+        CustomForm custf = new CustomForm();
+        List<car> customList = new List<car>();
         
         //a class for drivers to use for the listview
         class driver
@@ -226,15 +231,34 @@ namespace GT7_Randomizer
 
             public string drivetrain { get; set; }
 
-            public int hp { get; set; }
+            public int horsepower { get; set; }
+
+            public float torque { get; set; }
 
             public int weight { get; set; }
+
+            public float performancePoints { get; set; }
+
+            public string[] categories { get; set; }
 
             public car(string nm, string dt)
             {
 
                 this.name = nm;
                 this.drivetrain = dt;
+
+            }
+
+            public car (string nm, string dt, int pw, float tq, int wt, float pp, string[] cats)
+            {
+
+                this.name = nm;
+                this.drivetrain = dt;
+                this.horsepower = pw;
+                this.torque = tq;
+                this.weight = wt;
+                this.performancePoints = pp;
+                this.categories = cats;
 
             }
 
@@ -278,12 +302,13 @@ namespace GT7_Randomizer
             
             InitializeComponent();
 
-            //event listener that listens for when the track form is closed. When it is, we pull the track list
-            //from the track configuration form, so that we use the updated list with our calculations
+            //event listener that listens for when any of the forms are closed. When it is, we pull the respective list
+            //from the respective configuration form, so that we use the updated list with our calculations
             tf.Closed += (sender, args) => this.trackListNew = tf.getTrackList();
             g3f.Closed += (sender, args) => this.gr3List = g3f.getCarList();
             g4f.Closed += (sender, args) => this.gr4List = g4f.getCarList();
             cf.Closed += (sender, args) => this.categoryList = cf.getCategoryList();
+            custf.Closed += (sender, args) => this.customList = custf.getCarList();
         }   
 
         public void Form1_Load(object sender, EventArgs e)
@@ -298,6 +323,7 @@ namespace GT7_Randomizer
             loadGr3Configure();
             loadGr4Configure();
             loadCategoryConfigure();
+            loadCustomConfigure();
               
         }
 
@@ -313,10 +339,21 @@ namespace GT7_Randomizer
             //than there are slots to repeat. If this is the case, we're bypassing
             //the no repeats functionality to avoid infinite loops
 
+            if (gr3List.Count == 0)
+            {
+                MessageBox.Show("WARNING: You're trying to generate a random Gr.3 with an empty list of tracks." +
+                    " Normally, this would cause the program to blow up, however DJ the programmer saw the future" +
+                    " and suspected this might happen. To fix this, open the Gr.3 config and select at least one car" +
+                    " before hitting the Save button (or clicking the X, since that's what you did to get here you trickster :P )");
+
+                //this actually prints nothing but in the event i change some things, it might
+                return "Empty car list, please add a car via the Gr.3 config module";
+            }
+
             //if I change the no repeats size down the line, I need to make sure
             //to change this as well
 
-            if(gr3List.Count <= 5)
+            if (gr3List.Count <= 5)
             {
                 MessageBox.Show("Warning: You have a list of Group 3 cars that is less than " +
                     "the minimum required for no repeats. If this was an accident, please make sure to choose 5 or more " +
@@ -367,6 +404,22 @@ namespace GT7_Randomizer
             //than there are slots to repeat. If this is the case, we're bypassing
             //the no repeats functionality to avoid infinite loops
 
+            //some checks for track list length shenanigans, starting with 0, which is only possible if the person
+            //unchecks everything and then hits the X button
+
+            if (gr4List.Count == 0)
+            {
+                MessageBox.Show("WARNING: You're trying to generate a random Gr.4 with an empty list of tracks." +
+                    " Normally, this would cause the program to blow up, however DJ the programmer saw the future" +
+                    " and suspected this might happen. To fix this, open the Gr.4 config and select at least one car" +
+                    " before hitting the Save button (or clicking the X, since that's what you did to get here you trickster :P )");
+
+                //this actually prints nothing but in the event i change some things, it might
+                return "Empty car list, please add a car via the Gr.4 config module";
+            }
+
+
+
             //if I change the no repeats size down the line, I need to make sure
             //to change this as well
 
@@ -410,8 +463,9 @@ namespace GT7_Randomizer
         
         }
 
-        //generates a car using a list you can pick via a file dialog box
-        private string customGenerate(string sFileName) {
+        //generates a car using a list you can pick via a file dialog box. This is somewhat deprecated now
+        //but I might come back to it in the future, so I don't want to lose it yet.
+       /* private string customGenerate(string sFileName) {
 
             List<String> customList = new List<String>();
             Random rnd = new Random();
@@ -451,6 +505,66 @@ namespace GT7_Randomizer
             return "error choosing car.";
 
 
+        }*/
+
+        //generates a car using the lists I've built through the configs and whatnot
+        //I don't want to get rid of the above yet in case I want to use it for something else
+        private string customGenerate()
+        {
+
+            Random rnd = new Random();
+            bool repeat = true;
+
+            //some checks for track list length shenanigans, starting with 0, which is only possible if the person
+            //unchecks everything and then hits the X button
+
+            if (customList.Count == 0)
+            {
+                MessageBox.Show("WARNING: You're trying to generate a random car with an empty list of cars." +
+                    " Normally, this would cause the program to blow up, however DJ the programmer saw the future" +
+                    " and suspected this might happen. To fix this, open the custom config and select at least one car" +
+                    " before hitting the Save button (or clicking the X, since that's what you did to get here you trickster :P )");
+
+                //this actually prints nothing but in the event i change some things, it might
+                return "Empty car list, please add a car via the custom config module";
+            }
+
+
+            if (customList.Count <= 5 && customList.Count > 0)
+            {
+                MessageBox.Show("Warning: You have a custom list of cars that is less than " +
+                    "the minimum required for no repeats. If this was an accident, please make sure to choose 5 or more " +
+                    "cars the next time you create a custom list of cars to randomize.\n\n" +
+                    "A random car from your list will now be chosen but may be a repeat if this list is used " +
+                    "more than once.");
+                int car2 = rnd.Next(customList.Count);
+                return customList[car2].name;
+            }
+
+            if (customRepeats.Count >= 5)
+            {
+                customRepeats.RemoveAt(0);
+
+            }
+
+            do
+            {
+
+                int car = rnd.Next(customList.Count);
+
+                if (!customRepeats.Contains(customList[car]))
+                {
+                    customRepeats.Add(customList[car]);
+                    repeat = false;
+                    return customList[car].name;
+
+                }
+
+            } while (repeat == true);
+
+            return "error choosing car.";
+
+
         }
 
         //generates a track using the tracks in the configured list (either base
@@ -462,30 +576,65 @@ namespace GT7_Randomizer
             Boolean repeat = true;
 
 
-            //for simplicity, there will be no repeats after 5. This can be adjusted in the code
-            //or maybe via a variable down the line
+            //some checks for track list length shenanigans, starting with 0, which is only possible if the person
+            //unchecks everything and then hits the X button
 
-            if (trackRepeats.Count >= 5)
+            if(trackListNew.Count == 0)
             {
-                trackRepeats.RemoveAt(0);
+                MessageBox.Show("WARNING: You're trying to generate a random track with an empty list of tracks." +
+                    " Normally, this would cause the program to blow up, however DJ the programmer saw the future" +
+                    " and suspected this might happen. To fix this, open the track config and select at least one track" +
+                    " before hitting the Save button (or clicking the X, since that's what you did to get here you trickster :P )");
+
+                //this actually prints nothing but in the event i change some things, it might
+                return "Empty track list, please add a track via the track config module";
             }
 
-            do
+
+            //and then if it's less than the no repeats amount
+            if (trackListNew.Count > 0 && trackListNew.Count <= 5)
             {
-                int track = rnd.Next(trackListNew.Count);
-                string trackName = trackListNew[track].name;
+                MessageBox.Show("WARNING: You're trying to generate a random track with a list of tracks" +
+                    " that is shorter than the amount of nonrepeatable tracks. A random track will be chosen from your " +
+                    "current list of tracks, however there may be repeats.");
 
-                weatherText(trackListNew[track]);
-                timeOfDayText(trackListNew[track]);
+                int trk2 = rnd.Next(trackListNew.Count);
+                trackBox.Text = trackListNew[trk2].name;
 
-                if (!trackRepeats.Contains(trackName))
+                weatherText(trackListNew[trk2]);
+                timeOfDayText(trackListNew[trk2]);
+            }
+            else
+            {
+                //if the track length list is above the minimum amount, we carry on as normal.
+
+                //for simplicity, there will be no repeats after 5. This can be adjusted in the code
+                //or maybe via a variable down the line
+
+                if (trackRepeats.Count >= 5)
                 {
-                    trackRepeats.Add(trackName);
-                    repeat = false;
-                    trackBox.Text = trackListNew[track].name;
+                    trackRepeats.RemoveAt(0);
                 }
 
-            } while (repeat == true);
+                do
+                {
+                    int track = rnd.Next(trackListNew.Count);
+                    string trackName = trackListNew[track].name;
+
+                    weatherText(trackListNew[track]);
+                    timeOfDayText(trackListNew[track]);
+
+                    if (!trackRepeats.Contains(trackName))
+                    {
+                        trackRepeats.Add(trackName);
+                        repeat = false;
+                        trackBox.Text = trackListNew[track].name;
+                    }
+
+                } while (repeat == true);
+
+
+            }
 
             //if the fuel and tire wear box is checked, run through a series of checks
             //to see if the value is at 0 or not.
@@ -540,9 +689,20 @@ namespace GT7_Randomizer
             if (categoryCheck.Checked)
             {
 
-                int cat = rnd.Next(categoryList.Count);
+                if (categoryList.Count == 0)
+                {
+                    MessageBox.Show("WARNING: You have a category list that has no categories in it. Please go back to the " +
+                        "Category Config and check at least one box on the list so the random track generator can generate" +
+                        "a random category for you. The category box will show N/A to reflect the empty list.");
 
-                categoryBox.Text = categoryList[cat].name;
+                    categoryBox.Text = "N/A";
+                }
+                else
+                {
+                    int cat = rnd.Next(categoryList.Count);
+
+                    categoryBox.Text = categoryList[cat].name;
+                }
 
             } else
             {
@@ -749,23 +909,31 @@ namespace GT7_Randomizer
         private void customListBtn_Click(object sender, EventArgs e)
         {
 
-            OpenFileDialog customListFD = new OpenFileDialog();
-            customListFD.Multiselect = false;
-            customListFD.Filter = "Text Files (*.txt)| *.txt";
-            customListFD.FilterIndex = 1;
 
-            if (customListFD.ShowDialog() == DialogResult.OK)
-            {
-                string sFileName = customListFD.FileName;
 
-                randomCarBox.Text = customGenerate(sFileName);
+            randomCarBox.Text = customGenerate();
 
-            }
-            else
-            {
-                MessageBox.Show("There was a problem using the custom list. Please select a .txt file containing a list of cars.");
-                return;
-            }          
+
+
+            //I don't want to delete the below yet, I may come back to this functionality
+
+            //OpenFileDialog customListFD = new OpenFileDialog();
+            //customListFD.Multiselect = false;
+            //customListFD.Filter = "Text Files (*.txt)| *.txt";
+            //customListFD.FilterIndex = 1;
+
+            //if (customListFD.ShowDialog() == DialogResult.OK)
+            //{
+            //    string sFileName = customListFD.FileName;
+
+            //    randomCarBox.Text = customGenerate(sFileName);
+
+            //}
+            //else
+            //{
+            //    MessageBox.Show("There was a problem using the custom list. Please select a .txt file containing a list of cars.");
+            //    return;
+            //}          
         }
 
         private void AddDriverBtn_Click(object sender, EventArgs e)
@@ -827,30 +995,42 @@ namespace GT7_Randomizer
 
             int count = 0;
 
-            OpenFileDialog customListFD = new OpenFileDialog();
-            customListFD.Multiselect = false;
-            customListFD.Filter = "Text Files (*.txt)| *.txt";
-            customListFD.FilterIndex = 1;
 
-
-            if (customListFD.ShowDialog() == DialogResult.OK)
+            foreach (ListViewItem item in driverList.Items)
             {
-                string sFileName = customListFD.FileName;
-
-                foreach (ListViewItem item in driverList.Items)
-                {
-                    string randCar = customGenerate(sFileName);
-                    driverList.Items[count].SubItems[2].Text = randCar;
-                    count++;
-                }
-
+                string randCar = customGenerate();
+                driverList.Items[count].SubItems[2].Text = randCar;
+                count++;
             }
-            else
-            {
 
-                MessageBox.Show("There was a problem using the custom list. Please select a .txt file containing a list of cars.");
-                return;
-            }
+
+            //this is sloppy but I may want to keep this for later use, easier to remember if I don't have
+            //to google how to do this again.
+
+            /* OpenFileDialog customListFD = new OpenFileDialog();
+             customListFD.Multiselect = false;
+             customListFD.Filter = "Text Files (*.txt)| *.txt";
+             customListFD.FilterIndex = 1;
+
+
+             if (customListFD.ShowDialog() == DialogResult.OK)
+             {
+                 string sFileName = customListFD.FileName;
+
+                 foreach (ListViewItem item in driverList.Items)
+                 {
+                     string randCar = customGenerate(sFileName);
+                     driverList.Items[count].SubItems[2].Text = randCar;
+                     count++;
+                 }
+
+             }
+             else
+             {
+
+                 MessageBox.Show("There was a problem using the custom list. Please select a .txt file containing a list of cars.");
+                 return;
+             }*/
         }
 
         private void loadTrackConfigure()
@@ -1099,6 +1279,58 @@ namespace GT7_Randomizer
 
         }
 
+        //function to load the custom list into the form when the application is first launched
+        private void loadCustomConfigure() 
+        {
+            int testCount = 1;
+            //for each line in the custom list, add it to the base list
+            try
+            {
+                foreach (string line in System.IO.File.ReadLines("Data/CustomList.djb"))
+            {
+
+                //as of 7/25/22, there are 7 things in the custom list, name, drivetrain, categories
+                //power, torque, weight, PP
+                //col[0] - name, str
+                //col[1] - drivetrain, str
+                //col[2] - horsepower, int
+                //col[3] - torque, float
+                //col[4] - weight, int
+                //col[5] - performance points, float
+                //col[6] - a pipe delimited list of categories, string[]
+
+                string[] col = line.Split(',');
+
+                
+                    //splits the categories into individual items in an array
+                    string[] col2 = col[6].Split('|');
+                
+
+                //create a new car using the data, and add it to the list
+
+                car car = new car(col[0], col[1], Int32.Parse(col[2]), float.Parse(col[3]), Int32.Parse(col[4]), float.Parse(col[5]), col2 );
+                customList.Add(car);
+
+                ListViewItem item;
+
+                item = new ListViewItem(col);
+                item.Checked = true;
+                customFormList.Add(item);
+                    testCount++;
+
+            }
+        } catch (Exception ex)
+            {
+
+                MessageBox.Show("There's a problem with the data at line " + testCount + ". If you have" +
+                    " modified the custom file, please check your modifications. Otherwise, please report " +
+                    "this to DJ Brohawk on one of his socials, including the .djb file.");
+            }
+
+    custf.lv = customFormList;
+
+        }
+
         //function to set the track list from another form
         public void setTrackList(List<track> trkList)
         {
@@ -1147,7 +1379,8 @@ namespace GT7_Randomizer
             if (e.KeyCode == Keys.Enter) {
 
                 addDriver();
-                
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
 
@@ -1177,6 +1410,12 @@ namespace GT7_Randomizer
         {
             cf.setCategoryList(categoryList);
             cf.ShowDialog();
+        }
+
+        private void customConfigBtn_Click(object sender, EventArgs e)
+        {
+            custf.setCarList(customList);
+            custf.ShowDialog();
         }
     }
 }
