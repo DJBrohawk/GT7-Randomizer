@@ -126,7 +126,7 @@ namespace GT7_Randomizer
             this.Controls.Add(this.checkAllGr3Btn);
             this.Controls.Add(this.gr3ListView);
             this.Name = "gr3Form";
-            this.Text = "Gr.3 List";
+            this.Text = "Gr.3 Config";
             this.Load += new System.EventHandler(this.gr3Form_Load);
             this.ResumeLayout(false);
 

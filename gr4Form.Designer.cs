@@ -112,7 +112,7 @@ namespace GT7_Randomizer
             this.gr4AWDOnlyBtn.Name = "gr4AWDOnlyBtn";
             this.gr4AWDOnlyBtn.Size = new System.Drawing.Size(104, 34);
             this.gr4AWDOnlyBtn.TabIndex = 10;
-            this.gr4AWDOnlyBtn.Text = "AWD Only";
+            this.gr4AWDOnlyBtn.Text = "4WD Only";
             this.gr4AWDOnlyBtn.UseVisualStyleBackColor = true;
             this.gr4AWDOnlyBtn.Click += new System.EventHandler(this.gr4AWDOnlyBtn_Click);
             // 
@@ -150,7 +150,7 @@ namespace GT7_Randomizer
             this.Controls.Add(this.gr4CheckAllBtn);
             this.Controls.Add(this.gr4ListView);
             this.Name = "gr4Form";
-            this.Text = "gr4Form";
+            this.Text = "Gr.4 Config";
             this.Load += new System.EventHandler(this.gr4Form_Load);
             this.ResumeLayout(false);
 

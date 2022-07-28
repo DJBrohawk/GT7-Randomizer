@@ -136,7 +136,7 @@ namespace GT7_Randomizer
             this.Controls.Add(this.customCheckAllBtn);
             this.Controls.Add(this.customListView);
             this.Name = "CustomForm";
-            this.Text = "CustomForm";
+            this.Text = "Custom Config";
             this.Load += new System.EventHandler(this.CustomForm_Load);
             this.ResumeLayout(false);
 

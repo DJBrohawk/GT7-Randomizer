@@ -127,5 +127,5 @@ Have fun! :)
 
 4) Adding a way to do math based on a car's PP to where everyone can use a different car on a track and a "winner" can be determined based on lap times proportionate to their car's PP versus an "expected" lap time  - this assumes no foul play in a tuned car's setup for PP manipulation, and nobody likes PP manipulation. 
 
-
+5) Create some kind of slot machine or wheel animation for the random picking
 

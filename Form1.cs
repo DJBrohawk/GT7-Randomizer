@@ -161,7 +161,7 @@ namespace GT7_Randomizer
             public string getWeather(bool forceRain) {
 
                 Random rnd = new Random();
-                int weatherNumber = rnd.Next(8) + 23;
+                int weatherNumber = rnd.Next(8) + 24;
                
                 //this handles occasions where force rain is on and the track doesn't have rain
                 if (weather.Count <= 25)
@@ -341,7 +341,7 @@ namespace GT7_Randomizer
 
             if (gr3List.Count == 0)
             {
-                MessageBox.Show("WARNING: You're trying to generate a random Gr.3 with an empty list of tracks." +
+                MessageBox.Show("WARNING: You're trying to generate a random Gr.3 car with an empty list of cars." +
                     " Normally, this would cause the program to blow up, however DJ the programmer saw the future" +
                     " and suspected this might happen. To fix this, open the Gr.3 config and select at least one car" +
                     " before hitting the Save button (or clicking the X, since that's what you did to get here you trickster :P )");
@@ -741,7 +741,7 @@ namespace GT7_Randomizer
 
             if (bopCheck.Checked)
             {
-                int bop = rnd.Next(1);
+                int bop = rnd.Next(2);
 
                 if (bop == 1)
                 {
@@ -782,6 +782,27 @@ namespace GT7_Randomizer
                 tireTypeBox.Text = "N/A";
             }
 
+            //this can either be "laps" or "endurance", just randomizes one or the other
+
+            if (raceTypeCheck.Checked)
+            {
+
+                int raceType = rnd.Next(2);
+
+                if(raceType == 1)
+                {
+                    raceTypeBox.Text = "Endurance";
+                } else
+                {
+                    raceTypeBox.Text = "Laps";
+                }
+
+
+            } else
+            {
+                raceTypeBox.Text = "N/A";
+            }
+
             return "error choosing track";
         }
 
@@ -790,6 +811,16 @@ namespace GT7_Randomizer
         //"wins the random pick lottery" - had to do it this way b/c of the no repeats rule
         private void timeOfDayText(track track)
         {
+
+            if (forceNightCheck.Checked && !startTimeCheck.Checked)
+            {
+
+                MessageBox.Show("WARNING: The Force Night setting will only work " +
+                    "if the 'Start Time' box is also checked.");
+
+            }
+
+
             if (startTimeCheck.Checked)
             {
 
@@ -811,6 +842,12 @@ namespace GT7_Randomizer
 
         private void weatherText(track track)
         {
+
+            if(forceRainCheck.Checked && !weatherCheck.Checked)
+            {
+                MessageBox.Show("WARNING: The Force Rain functionality will only work if the weather randomization box" +
+                    " is also checked.");
+            }
 
             //weather - this uses the getWeather function in the track object to get random weather
             //from the options the track has
@@ -1203,7 +1240,15 @@ namespace GT7_Randomizer
                     //create a new car using the data, and add it to the list
 
                     category category = new category(col[0], col[1], col[2]);
-                    categoryList.Add(category);
+
+
+                    //this is so that the initial category list you can randomize if you don't go into the config
+                    //at all doesn't have everything in it
+
+                    if (category.standard.Trim().ToLower() == "standard")
+                    {
+                        categoryList.Add(category);
+                    }
 
                     ListViewItem item;
 
@@ -1258,7 +1303,7 @@ namespace GT7_Randomizer
                     //since there's only two things in each line of the custom category
                     //text file, we're passing in custom automatically
                     category category = new category(col[0], col[1], "Custom");
-                    categoryList.Add(category);
+                    //categoryList.Add(category);
 
                     //due to some shenanigans with the custom category form's split array not having custom in it
                     //for ease of use for users, I have to make another array here to pass in the

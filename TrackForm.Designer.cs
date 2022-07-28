@@ -133,7 +133,7 @@ namespace GT7_Randomizer
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.trackList);
             this.Name = "TrackForm";
-            this.Text = "Random Track List";
+            this.Text = "Track Config";
             this.Load += new System.EventHandler(this.TrackForm_Load);
             this.ResumeLayout(false);
 

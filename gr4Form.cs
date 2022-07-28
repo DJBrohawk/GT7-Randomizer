@@ -125,7 +125,7 @@ namespace GT7_Randomizer
         {
             foreach (ListViewItem eachItem in gr4ListView.Items)
             {
-                if (eachItem.SubItems[1].Text.Trim().ToUpper() == "AWD")
+                if (eachItem.SubItems[1].Text.Trim().ToUpper() == "4WD")
                 {
                     eachItem.Checked = true;
                 }
