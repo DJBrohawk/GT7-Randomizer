@@ -1,0 +1,12 @@
+C:\School and Educational Projects\Builds\GT7 Randomizer\GT7 Randomizer.exe
+C:\School and Educational Projects\Builds\GT7 Randomizer\Data\BaseTrackList.djb
+C:\School and Educational Projects\Builds\GT7 Randomizer\Data\CategoryList.djb
+C:\School and Educational Projects\Builds\GT7 Randomizer\Data\CustomCategoryList.txt
+C:\School and Educational Projects\Builds\GT7 Randomizer\Data\CustomList.djb
+C:\School and Educational Projects\Builds\GT7 Randomizer\Data\Gr3List.djb
+C:\School and Educational Projects\Builds\GT7 Randomizer\Data\Gr4List.djb
+C:\School and Educational Projects\Builds\GT7 Randomizer\ReadMe.txt
+C:\School and Educational Projects\Builds\GT7 Randomizer\GT7 Randomizer.dll
+C:\School and Educational Projects\Builds\GT7 Randomizer\GT7 Randomizer.deps.json
+C:\School and Educational Projects\Builds\GT7 Randomizer\GT7 Randomizer.runtimeconfig.json
+C:\School and Educational Projects\Builds\GT7 Randomizer\GT7 Randomizer.pdb

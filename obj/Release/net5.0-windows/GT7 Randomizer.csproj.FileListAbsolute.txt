@@ -41,3 +41,10 @@ C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7_Randomizer.gr3Form.resources
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7_Randomizer.gr4Form.resources
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\obj\Release\net5.0-windows\GT7_Randomizer.CustomForm.resources
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\Data\BaseTrackList.djb
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\Data\CategoryList.djb
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\Data\CustomCategoryList.txt
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\Data\CustomList.djb
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\Data\Gr3List.djb
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\Data\Gr4List.djb
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\ReadMe.txt
