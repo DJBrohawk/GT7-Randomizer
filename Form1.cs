@@ -806,6 +806,51 @@ namespace GT7_Randomizer
             return "error choosing track";
         }
 
+        private string shuffleGenerate()
+        {
+            //initialize the random we're going to use as well as converting the
+            //performance points box value into a float to compare to what is in the
+            //custom list's PP values for each car
+            Random rnd = new Random();
+            float pp = (float)shufflePPBox.Value;
+            List<car> shuffleCars = new List<car>();
+            int ppVar = (int)shufflePPVariationBox.Value;
+
+            //some checks for custom list length shenanigans, starting with 0, which is only possible if the person
+            //unchecks everything and then hits the X button
+
+            if (customList.Count == 0)
+            {
+                MessageBox.Show("WARNING: You're trying to generate a random car with an empty list of cars." +
+                    " Normally, this would cause the program to blow up, however DJ the programmer saw the future" +
+                    " and suspected this might happen. To fix this, open the custom config and select at least one car" +
+                    " before hitting the Save button (or clicking the X, since that's what you did to get here you trickster :P )");
+
+                //this actually prints nothing but in the event i change some things, it might
+                return "Empty car list, please add a car via the custom config module";
+            }
+
+            //iterate through the custom list to see which cars fall within X amount of PP
+            //of the chosen PP amount
+
+            foreach (car car in customList)
+            {
+
+                if(car.performancePoints >= pp - ppVar && car.performancePoints <= pp + ppVar)
+                {
+
+                    shuffleCars.Add(car);
+
+                }
+
+            }
+
+            int pick = rnd.Next(0, shuffleCars.Count - 1);
+
+            return shuffleCars[pick].name;
+
+        }
+
 
         //the below two functions are to get the text for weather and start time from the object that 
         //"wins the random pick lottery" - had to do it this way b/c of the no repeats rule
@@ -1068,6 +1113,34 @@ namespace GT7_Randomizer
                  MessageBox.Show("There was a problem using the custom list. Please select a .txt file containing a list of cars.");
                  return;
              }*/
+        }
+
+        private void shuffleRace()
+        {
+            int count = 0;
+
+            if (driverList.Items.Count == 0)
+            {
+                MessageBox.Show("There are no items in the race list, you cannot generate a race. Please add at least one driver to the race list to generate a race.");
+                return;
+            }
+
+            foreach (ListViewItem item in driverList.Items)
+            {
+                string randCar = shuffleGenerate();
+                try
+                {
+                    driverList.Items[count].SubItems[2].Text = randCar;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(count + " SHULK SCREAM AHHHHHHehhhhuhhh");
+
+                }
+                count++;
+            }
+
+
         }
 
         private void loadTrackConfigure()
@@ -1461,6 +1534,11 @@ namespace GT7_Randomizer
         {
             custf.setCarList(customList);
             custf.ShowDialog();
+        }
+
+        private void shuffleRaceBtn_Click(object sender, EventArgs e)
+        {
+            shuffleRace();
         }
     }
 }

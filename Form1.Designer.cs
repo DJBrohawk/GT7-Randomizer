@@ -41,10 +41,6 @@ namespace GT7_Randomizer
             this.gr3RaceBtn = new System.Windows.Forms.Button();
             this.gr4RaceBtn = new System.Windows.Forms.Button();
             this.customRaceBtn = new System.Windows.Forms.Button();
-            this.driverList = new System.Windows.Forms.ListView();
-            this.No = new System.Windows.Forms.ColumnHeader();
-            this.DriverName = new System.Windows.Forms.ColumnHeader();
-            this.Car = new System.Windows.Forms.ColumnHeader();
             this.clearListBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.trackBox = new System.Windows.Forms.TextBox();
@@ -98,9 +94,20 @@ namespace GT7_Randomizer
             this.gr4ConfigureBtn = new System.Windows.Forms.Button();
             this.categoryConfigureBtn = new System.Windows.Forms.Button();
             this.customConfigBtn = new System.Windows.Forms.Button();
+            this.shuffleRaceBtn = new System.Windows.Forms.Button();
+            this.No = new System.Windows.Forms.ColumnHeader();
+            this.DriverName = new System.Windows.Forms.ColumnHeader();
+            this.Car = new System.Windows.Forms.ColumnHeader();
+            this.driverList = new System.Windows.Forms.ListView();
+            this.label20 = new System.Windows.Forms.Label();
+            this.shufflePPBox = new System.Windows.Forms.NumericUpDown();
+            this.label21 = new System.Windows.Forms.Label();
+            this.shufflePPVariationBox = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.maxLapBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fuelMultiplierBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tireMultiplierBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shufflePPBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shufflePPVariationBox)).BeginInit();
             this.SuspendLayout();
             // 
             // gr3Btn
@@ -205,37 +212,6 @@ namespace GT7_Randomizer
             this.customRaceBtn.Text = "Custom Race";
             this.customRaceBtn.UseVisualStyleBackColor = true;
             this.customRaceBtn.Click += new System.EventHandler(this.customRaceBtn_Click);
-            // 
-            // driverList
-            // 
-            this.driverList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.No,
-            this.DriverName,
-            this.Car});
-            this.driverList.FullRowSelect = true;
-            this.driverList.GridLines = true;
-            this.driverList.HideSelection = false;
-            this.driverList.Location = new System.Drawing.Point(1007, 9);
-            this.driverList.Name = "driverList";
-            this.driverList.Size = new System.Drawing.Size(512, 483);
-            this.driverList.TabIndex = 12;
-            this.driverList.UseCompatibleStateImageBehavior = false;
-            this.driverList.View = System.Windows.Forms.View.Details;
-            // 
-            // No
-            // 
-            this.No.Text = "#";
-            this.No.Width = 30;
-            // 
-            // DriverName
-            // 
-            this.DriverName.Text = "Driver";
-            this.DriverName.Width = 120;
-            // 
-            // Car
-            // 
-            this.Car.Text = "Car";
-            this.Car.Width = 350;
             // 
             // clearListBtn
             // 
@@ -737,11 +713,124 @@ namespace GT7_Randomizer
             this.customConfigBtn.UseVisualStyleBackColor = true;
             this.customConfigBtn.Click += new System.EventHandler(this.customConfigBtn_Click);
             // 
+            // shuffleRaceBtn
+            // 
+            this.shuffleRaceBtn.Location = new System.Drawing.Point(849, 541);
+            this.shuffleRaceBtn.Name = "shuffleRaceBtn";
+            this.shuffleRaceBtn.Size = new System.Drawing.Size(152, 34);
+            this.shuffleRaceBtn.TabIndex = 73;
+            this.shuffleRaceBtn.Text = "Shuffle Race";
+            this.shuffleRaceBtn.UseVisualStyleBackColor = true;
+            this.shuffleRaceBtn.Click += new System.EventHandler(this.shuffleRaceBtn_Click);
+            // 
+            // No
+            // 
+            this.No.Text = "#";
+            this.No.Width = 30;
+            // 
+            // DriverName
+            // 
+            this.DriverName.Text = "Driver";
+            this.DriverName.Width = 120;
+            // 
+            // Car
+            // 
+            this.Car.Text = "Car";
+            this.Car.Width = 350;
+            // 
+            // driverList
+            // 
+            this.driverList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.No,
+            this.DriverName,
+            this.Car});
+            this.driverList.FullRowSelect = true;
+            this.driverList.GridLines = true;
+            this.driverList.HideSelection = false;
+            this.driverList.Location = new System.Drawing.Point(1007, 9);
+            this.driverList.Name = "driverList";
+            this.driverList.Size = new System.Drawing.Size(512, 483);
+            this.driverList.TabIndex = 12;
+            this.driverList.UseCompatibleStateImageBehavior = false;
+            this.driverList.View = System.Windows.Forms.View.Details;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(791, 467);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(134, 25);
+            this.label20.TabIndex = 74;
+            this.label20.Text = "Shuffle Race PP";
+            // 
+            // shufflePPBox
+            // 
+            this.shufflePPBox.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.shufflePPBox.Location = new System.Drawing.Point(940, 465);
+            this.shufflePPBox.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
+            this.shufflePPBox.Minimum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.shufflePPBox.Name = "shufflePPBox";
+            this.shufflePPBox.Size = new System.Drawing.Size(64, 31);
+            this.shufflePPBox.TabIndex = 75;
+            this.shufflePPBox.Value = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(718, 502);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(208, 25);
+            this.label21.TabIndex = 76;
+            this.label21.Text = "Shuffle Race PP Variation";
+            // 
+            // shufflePPVariationBox
+            // 
+            this.shufflePPVariationBox.Location = new System.Drawing.Point(949, 498);
+            this.shufflePPVariationBox.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.shufflePPVariationBox.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.shufflePPVariationBox.Name = "shufflePPVariationBox";
+            this.shufflePPVariationBox.Size = new System.Drawing.Size(55, 31);
+            this.shufflePPVariationBox.TabIndex = 77;
+            this.shufflePPVariationBox.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1531, 589);
+            this.Controls.Add(this.shufflePPVariationBox);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.shufflePPBox);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.shuffleRaceBtn);
             this.Controls.Add(this.customConfigBtn);
             this.Controls.Add(this.categoryConfigureBtn);
             this.Controls.Add(this.gr4ConfigureBtn);
@@ -813,6 +902,8 @@ namespace GT7_Randomizer
             ((System.ComponentModel.ISupportInitialize)(this.maxLapBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fuelMultiplierBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tireMultiplierBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shufflePPBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shufflePPVariationBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -831,10 +922,6 @@ namespace GT7_Randomizer
         private System.Windows.Forms.Button gr3RaceBtn;
         private System.Windows.Forms.Button gr4RaceBtn;
         private System.Windows.Forms.Button customRaceBtn;
-        private System.Windows.Forms.ListView driverList;
-        private System.Windows.Forms.ColumnHeader No;
-        private System.Windows.Forms.ColumnHeader DriverName;
-        private System.Windows.Forms.ColumnHeader Car;
         private System.Windows.Forms.Button clearListBtn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox trackBox;
@@ -888,6 +975,15 @@ namespace GT7_Randomizer
         private System.Windows.Forms.Button gr4ConfigureBtn;
         private System.Windows.Forms.Button categoryConfigureBtn;
         private System.Windows.Forms.Button customConfigBtn;
+        private System.Windows.Forms.Button shuffleRaceBtn;
+        private System.Windows.Forms.ColumnHeader No;
+        private System.Windows.Forms.ColumnHeader DriverName;
+        private System.Windows.Forms.ColumnHeader Car;
+        private System.Windows.Forms.ListView driverList;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.NumericUpDown shufflePPBox;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.NumericUpDown shufflePPVariationBox;
     }
 }
 
