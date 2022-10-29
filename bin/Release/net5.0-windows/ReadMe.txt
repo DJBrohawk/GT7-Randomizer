@@ -1,5 +1,5 @@
 ﻿READ ME
-Version 2.1
+Version 2.2
 
 Hello! Welcome to DJ Brohawk's GT7 randomizer app, Version 2! (Version 1 was unceremoniously dumped during an internet outage - F's in the chat for version 1). Firstly, since this readme is quite long (TL;DR section included), if there are any comments, questions, or concerns, I can be found on Twitter @DJBrohawk! :)
 
@@ -28,6 +28,8 @@ With this app, you'll be able to do a number of things:
 I have it currently set to where the most recent 5 cars and tracks chosen will not be repeated. I did not apply this restriction to the categories.
 
 In the future, I might add a checkbox or variable to change this! :)
+
+4) Generate a random car for everyone in your race based on a PP value and PP value variation, like the Shuffle Races from GT5!
 
 ---GENERATING A RANDOM TRACK---(trk)
 

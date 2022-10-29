@@ -845,7 +845,7 @@ namespace GT7_Randomizer
 
             }
 
-            int pick = rnd.Next(0, shuffleCars.Count - 1);
+            int pick = rnd.Next(shuffleCars.Count);
 
             return shuffleCars[pick].name;
 
@@ -1119,11 +1119,7 @@ namespace GT7_Randomizer
         {
             int count = 0;
 
-            if (driverList.Items.Count == 0)
-            {
-                MessageBox.Show("There are no items in the race list, you cannot generate a race. Please add at least one driver to the race list to generate a race.");
-                return;
-            }
+          
 
             foreach (ListViewItem item in driverList.Items)
             {
@@ -1536,9 +1532,45 @@ namespace GT7_Randomizer
             custf.ShowDialog();
         }
 
-        private void shuffleRaceBtn_Click(object sender, EventArgs e)
+        private async void shuffleRaceBtn_Click(object sender, EventArgs e)
         {
-            shuffleRace();
+
+            if (driverList.Items.Count == 0)
+            {
+                MessageBox.Show("There are no items in the race list, you cannot generate a race. Please add at least one driver to the race list to generate a race.");
+                return;
+            }
+
+            System.Media.SoundPlayer player = new System.Media.SoundPlayer("Data/cat_scratch.wav");
+            player.Play();
+
+            foreach (ListViewItem lvw in driverList.Items)
+            {
+
+                lvw.BackColor = Color.White;
+
+            }
+
+            for (int i = 0; i <= 35; i++) {
+
+                shuffleRace();
+                await Task.Delay(100);
+
+            }
+
+            foreach (ListViewItem lvw in driverList.Items)
+            {
+
+                string hex = "#DAF7A6";
+                Color _color = System.Drawing.ColorTranslator.FromHtml(hex);
+                lvw.BackColor = _color;
+                
+
+                
+            }
         }
+
     }
 }
+
+

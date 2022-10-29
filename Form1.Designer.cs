@@ -785,7 +785,7 @@ namespace GT7_Randomizer
             this.shufflePPBox.Size = new System.Drawing.Size(64, 31);
             this.shufflePPBox.TabIndex = 75;
             this.shufflePPBox.Value = new decimal(new int[] {
-            300,
+            400,
             0,
             0,
             0});

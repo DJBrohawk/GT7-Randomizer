@@ -48,3 +48,4 @@ C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\Data\Gr3List.djb
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\Data\Gr4List.djb
 C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\ReadMe.txt
+C:\School and Educational Projects\GT7 Randomizer\GT7 Randomizer\bin\Release\net5.0-windows\Data\cat_scratch.wav

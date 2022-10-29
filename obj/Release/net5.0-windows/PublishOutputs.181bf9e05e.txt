@@ -6,6 +6,7 @@ C:\School and Educational Projects\Builds\GT7 Randomizer\Data\CustomList.djb
 C:\School and Educational Projects\Builds\GT7 Randomizer\Data\Gr3List.djb
 C:\School and Educational Projects\Builds\GT7 Randomizer\Data\Gr4List.djb
 C:\School and Educational Projects\Builds\GT7 Randomizer\ReadMe.txt
+C:\School and Educational Projects\Builds\GT7 Randomizer\Data\cat_scratch.wav
 C:\School and Educational Projects\Builds\GT7 Randomizer\GT7 Randomizer.dll
 C:\School and Educational Projects\Builds\GT7 Randomizer\GT7 Randomizer.deps.json
 C:\School and Educational Projects\Builds\GT7 Randomizer\GT7 Randomizer.runtimeconfig.json
